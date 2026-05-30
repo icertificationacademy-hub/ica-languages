@@ -1,39 +1,23 @@
 const photoCards = [
   {
     title: "Maestros capacitados",
-    /*
-      IMAGEN: /images/why-maestros.jpg
-      (foto de la maestra con saco negro)
-    */
-    image: "/images/why-maestros.jpg",
-    placeholder: "bg-slate-400",
+    image: "/images/profe1.jpeg",
+    position: "center top",
   },
   {
     title: "Flexibilidad de horarios",
-    /*
-      IMAGEN: /images/why-horarios.jpg
-      (foto del calendario/agenda con pluma)
-    */
-    image: "/images/why-horarios.jpg",
-    placeholder: "bg-slate-500",
+    image: "/images/agenda.jpg",
+    position: "center center",
   },
   {
     title: "Cursos variados",
-    /*
-      IMAGEN: /images/why-cursos.jpg
-      (foto de alumna parada en el salón)
-    */
-    image: "/images/why-cursos.jpg",
-    placeholder: "bg-slate-600",
+    image: "/images/agenda2.jpeg",
+    position: "center center",
   },
   {
     title: "Ambiente cómodo",
-    /*
-      IMAGEN: /images/why-ambiente.jpg
-      (foto del salón de clases)
-    */
-    image: "/images/why-ambiente.jpg",
-    placeholder: "bg-slate-700",
+    image: "/images/agenda3.jpeg",
+    position: "center center",
   },
 ];
 
@@ -59,19 +43,19 @@ export default function WhyUs() {
           {photoCards.map((card) => (
             <div
               key={card.title}
-              className="relative rounded-2xl overflow-hidden aspect-[3/4] group"
+              className="relative rounded-2xl overflow-hidden aspect-[3/4] group cursor-default"
             >
-              {/*
-                Fondo de imagen — cuando pongas la foto real, se verá automáticamente.
-                Mientras tanto se muestra el color de placeholder.
-              */}
+              {/* Imagen de fondo */}
               <div
-                className={`absolute inset-0 ${card.placeholder} bg-cover bg-center transition-transform duration-500 group-hover:scale-105`}
-                style={{ backgroundImage: `url('${card.image}')` }}
+                className="absolute inset-0 bg-cover transition-transform duration-500 group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('${card.image}')`,
+                  backgroundPosition: card.position,
+                }}
               />
 
               {/* Overlay gradiente */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
               {/* Etiqueta inferior */}
               <div className="absolute bottom-0 left-0 right-0 p-4">

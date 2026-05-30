@@ -1,45 +1,91 @@
-import Link from "next/link";
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// 5 imágenes reales de certificaciones
+const certImages = [
+  { src: "/images/certifi1.png", alt: "Certificación DELF - ICA Languages" },
+  { src: "/images/certifi2.png", alt: "Certificación TCE - Alumna ICA Languages" },
+  { src: "/images/certifi3.png", alt: "Certificación TCE - Alumno ICA Languages" },
+  { src: "/images/certifi4.png", alt: "Certificación TCE - ICA Languages" },
+  { src: "/images/certifi5.png", alt: "Certificación TCE - ICA Languages" },
+];
 
 export default function CertificationsSection() {
+  const [current, setCurrent] = useState(0);
+
+  const next = useCallback(() => {
+    setCurrent((c) => (c + 1) % certImages.length);
+  }, []);
+
+  const prev = () => {
+    setCurrent((c) => (c - 1 + certImages.length) % certImages.length);
+  };
+
+  // Auto-avance cada 3.5 segundos
+  useEffect(() => {
+    const timer = setInterval(next, 3500);
+    return () => clearInterval(timer);
+  }, [next]);
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-          {/*
-            IMAGEN IZQUIERDA — reemplaza con tu imagen real de alumna con certificado FCE
-            Archivo sugerido: /images/cert-alumna-fce.jpg
-          */}
-          <div className="relative rounded-2xl overflow-hidden shadow-xl">
-            <div
-              className="w-full aspect-[4/3] bg-cover bg-center bg-no-repeat rounded-2xl"
-              style={{ backgroundImage: "url('/images/cert-alumna-fce.jpg')" }}
-            >
-              {/* Placeholder mientras no hay imagen */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center rounded-2xl">
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-4">🎓</div>
-                  <div className="inline-block bg-blue-700 text-white font-black text-xl px-6 py-2 rounded-lg mb-3">
-                    CERTIFICACIÓN
-                  </div>
-                  <div className="bg-blue-500 text-white font-black text-3xl px-6 py-2 rounded-lg mb-3">
-                    FCE
-                  </div>
-                  <p className="text-blue-800 text-sm font-semibold">(FIRST CERTIFICATE IN ENGLISH)</p>
-                  <div className="mt-4 bg-slate-900 text-white font-bold px-5 py-2 rounded-full inline-block text-sm">
-                    ¡CERTIFÍCATE CON NOSOTROS!
-                  </div>
+          {/* CARRUSEL izquierdo */}
+          <div className="relative group">
+            <div className="relative w-full aspect-square max-w-md mx-auto overflow-hidden rounded-2xl shadow-xl bg-blue-50">
+              {certImages.map((img, i) => (
+                <div
+                  key={img.src}
+                  className={`absolute inset-0 transition-all duration-500 ${
+                    i === current
+                      ? "opacity-100 scale-100"
+                      : "opacity-0 scale-95 pointer-events-none"
+                  }`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={i === 0}
+                  />
                 </div>
-              </div>
+              ))}
+
+              {/* Flechas */}
+              <button
+                onClick={prev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-4 h-4 text-slate-700" />
+              </button>
+              <button
+                onClick={next}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Siguiente"
+              >
+                <ChevronRight className="w-4 h-4 text-slate-700" />
+              </button>
             </div>
 
-            {/* Dots indicadores (simulando slideshow) */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <div
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {certImages.map((_, i) => (
+                <button
                   key={i}
-                  className={`rounded-full transition-all ${
-                    i === 1 ? "w-4 h-2 bg-white" : "w-2 h-2 bg-white/50"
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Ir a imagen ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "w-5 h-2 bg-teal-600"
+                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                   }`}
                 />
               ))}
@@ -66,44 +112,35 @@ export default function CertificationsSection() {
             {/* Logos instituciones */}
             <div className="flex flex-wrap items-center gap-8">
               {/* Cambridge */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="flex items-center gap-2">
-                  {/* Escudo Cambridge (SVG simplificado) */}
-                  <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" rx="4" fill="#c8102e"/>
-                    <text x="50" y="65" textAnchor="middle" fill="white" fontSize="42" fontWeight="bold">C</text>
-                  </svg>
-                  <div className="text-left">
-                    <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">University of</div>
-                    <div className="text-xl font-black text-slate-800 leading-none">CAMBRIDGE</div>
-                  </div>
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded flex items-center justify-center bg-[#c8102e]">
+                  <span className="text-white font-black text-sm">C</span>
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold leading-none">University of</div>
+                  <div className="text-lg font-black text-slate-800 leading-tight">CAMBRIDGE</div>
                 </div>
               </div>
 
               {/* Alianza Francesa */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full border-2 border-red-600 flex items-center justify-center text-red-600 font-black text-sm">
-                    af
-                  </div>
-                  <div className="text-left">
-                    <div className="text-sm font-bold text-slate-700 leading-tight">Alianza</div>
-                    <div className="text-sm font-bold text-slate-700 leading-tight">Francesa</div>
-                  </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full border-2 border-red-600 flex items-center justify-center">
+                  <span className="text-red-600 font-black text-sm italic">af</span>
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-slate-700 leading-tight">Alianza</div>
+                  <div className="text-sm font-bold text-slate-700 leading-tight">Francesa</div>
                 </div>
               </div>
 
               {/* Oxford */}
-              <div className="flex flex-col items-center gap-1">
-                <div className="flex items-center gap-2">
-                  <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" rx="4" fill="#002147"/>
-                    <text x="50" y="65" textAnchor="middle" fill="white" fontSize="38" fontWeight="bold">O</text>
-                  </svg>
-                  <div className="text-left">
-                    <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">University of</div>
-                    <div className="text-xl font-black text-slate-800 leading-none">OXFORD</div>
-                  </div>
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded flex items-center justify-center bg-[#002147]">
+                  <span className="text-white font-black text-sm">O</span>
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold leading-none">University of</div>
+                  <div className="text-lg font-black text-slate-800 leading-tight">OXFORD</div>
                 </div>
               </div>
             </div>

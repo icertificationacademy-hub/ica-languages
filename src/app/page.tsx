@@ -4,6 +4,7 @@ import CoursesGrid from "@/components/sections/CoursesGrid";
 import DemoClassSection from "@/components/sections/DemoClassSection";
 import WhyUs from "@/components/sections/WhyUs";
 import StatsSection from "@/components/sections/StatsSection";
+import PartnersSection from "@/components/sections/PartnersSection";
 import Testimonials from "@/components/sections/Testimonials";
 import CTASection from "@/components/sections/CTASection";
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <DemoClassSection />
       <WhyUs />
       <StatsSection />
+      <PartnersSection />
       <Testimonials />
       <CTASection />
     </>

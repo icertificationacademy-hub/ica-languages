@@ -10,7 +10,7 @@ export default function Hero() {
       */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero-students.jpg')" }}
+        style={{ backgroundImage: "url('/images/Inicio.jpeg')" }}
       />
 
       {/* Overlay oscuro semitransparente */}
