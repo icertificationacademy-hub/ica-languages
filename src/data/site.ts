@@ -21,10 +21,9 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: 98, suffix: "%", label: "Tasa de éxito" },
-  { value: 500, suffix: "+", label: "Estudiantes graduados" },
-  { value: 10, suffix: "+", label: "Años de experiencia" },
-  { value: 3, suffix: "", label: "Idiomas disponibles" },
+  { value: 4, suffix: "", label: "Idiomas" },
+  { value: 95, suffix: "%", label: "Éxito" },
+  { value: 80, suffix: "+", label: "Estudiantes" },
 ];
 
 export const navLinks = [
