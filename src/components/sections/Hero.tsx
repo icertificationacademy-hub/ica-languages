@@ -9,12 +9,16 @@ export default function Hero() {
         (los dos alumnos con sudadera ICA Languages Student Crew)
       */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/Inicio.jpeg')" }}
+        className="absolute inset-0 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/Inicio.jpeg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 20%",   /* sube el encuadre para ver caras y cuerpos */
+        }}
       />
 
       {/* Overlay oscuro semitransparente */}
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Contenido */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

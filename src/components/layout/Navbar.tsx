@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "var(--ica-teal)" }}>
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "#2b7a78" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
 
@@ -100,9 +100,9 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white rounded-full transition-all shadow-md hover:shadow-lg"
-              style={{ backgroundColor: "var(--ica-orange)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--ica-orange-dark)")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--ica-orange)")}
+              style={{ backgroundColor: "#f97316" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ea6c0a")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f97316")}
             >
               ACCESO CAMPUS
             </a>
@@ -129,7 +129,7 @@ export default function Navbar() {
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
           isOpen ? "max-h-screen" : "max-h-0"
         }`}
-        style={{ backgroundColor: "var(--ica-teal-dark)" }}
+        style={{ backgroundColor: "#1e5f5d" }}
       >
         <div className="px-4 py-4 space-y-1">
           {navLinks.map((link) => (
@@ -175,7 +175,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-full py-3 text-sm font-bold text-white rounded-full"
-              style={{ backgroundColor: "var(--ica-orange)" }}
+              style={{ backgroundColor: "#f97316" }}
             >
               ACCESO CAMPUS
             </a>
