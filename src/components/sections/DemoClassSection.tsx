@@ -11,7 +11,7 @@ export default function DemoClassSection() {
         */}
         <div
           className="relative rounded-3xl overflow-hidden min-h-[420px] flex items-center bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/clasemuestra.jpeg')", backgroundPosition: "center 80%" }}
+          style={{ backgroundImage: "url('/images/clasemuestra.jpeg')", backgroundPosition: "center 20%" }}
         >
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/55 rounded-3xl" />
