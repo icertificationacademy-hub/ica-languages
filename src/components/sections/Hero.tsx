@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ paddingTop: "84px" }} /* altura exacta del navbar */
+      style={{ paddingTop: "84px" }}
     >
       {/* ── IMAGEN DE FONDO ── */}
       <div
@@ -13,41 +13,54 @@ export default function Hero() {
         style={{
           backgroundImage: "url('/images/Inicio.jpeg')",
           backgroundSize: "cover",
-          backgroundPosition: "center top", /* imagen al tope → rostros en la parte superior */
+          backgroundPosition: "center 18%",
         }}
       />
 
-      {/* Overlay uniforme */}
-      <div className="absolute inset-0 bg-black/48" />
+      {/* Overlay suave — igual que en el original */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0.55) 100%)",
+        }}
+      />
 
-      {/* ── ESPACIO LIBRE ARRIBA ── */}
-      <div className="h-[33vh]" />
+      {/* Espaciador pequeño — texto queda debajo de los hombros */}
+      <div className="h-[8vh]" />
 
-      {/* ── CONTENIDO centrado-bajo ── */}
-      <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+      {/* ── CONTENIDO ── */}
+      <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-14">
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 drop-shadow-lg"
+          className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4"
           style={{
             fontFamily: "var(--font-plus-jakarta)",
-            textShadow: "0 2px 16px rgba(0,0,0,0.6)",
+            textShadow: "0 2px 20px rgba(0,0,0,0.55)",
           }}
         >
           ¡Aprende inglés con confianza!
         </h1>
 
-        <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-xl mx-auto leading-relaxed drop-shadow">
+        <p
+          className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed"
+          style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+        >
           Clases prácticas, grupos pequeños y enfoque conversacional.
         </p>
 
+        {/* Botón blanco angosto — igual al original */}
         <Link
           href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, me interesa agendar una clase muestra gratuita`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-10 py-4 bg-white hover:bg-slate-100 text-slate-900 font-bold text-base rounded-full transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+          className="inline-block px-12 py-4 bg-white hover:bg-slate-100 text-slate-900 font-bold text-base rounded-full transition-all shadow-xl hover:scale-105"
         >
           Agenda tu clase muestra
         </Link>
       </div>
+
+      {/* Espacio restante debajo */}
+      <div className="flex-1" />
 
       {/* ── BOTÓN WHATSAPP FLOTANTE ── */}
       <a
