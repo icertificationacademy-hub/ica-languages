@@ -1,88 +1,53 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
     name: "María Fernanda Gutiérrez",
     role: "Alumno",
     text: "Me inscribí al curso de inglés y la verdad me está encantando. La maestra está muy bien preparada y explica superbién. ¡Excelente servicio!",
+    rating: 5,
+    avatar: "MF",
+    color: "bg-blue-500",
   },
   {
     name: "José Antonio",
     role: "Alumno",
     text: "Tomé un curso de preparación para certificación, aprendí bastante y obtuve un puntaje alto.",
+    rating: 5,
+    avatar: "JA",
+    color: "bg-amber-500",
   },
   {
     name: "Luis Ángel Hernandez",
     role: "Alumno",
     text: "Estoy en el curso de francés y enseñan muy bien. Recomiendo mucho la escuela.",
+    rating: 5,
+    avatar: "LH",
+    color: "bg-green-500",
   },
   {
     name: "Estefany Aquino",
     role: "Alumno",
     text: "Me metí al curso de preparación para TOEFL porque lo necesitaba para la universidad y me gustó tanto la forma en que enseñaban que seguí en el curso de inglés regular.",
+    rating: 5,
+    avatar: "EA",
+    color: "bg-purple-500",
   },
 ];
 
-// Ícono de persona
-function PersonIcon() {
-  return (
-    <svg className="w-12 h-12 text-slate-600" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-    </svg>
-  );
-}
-
-// Ícono de trofeo/podio amarillo
-function TrophyIcon() {
-  return (
-    <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none">
-      {/* estrella */}
-      <polygon points="24,4 27,14 38,14 29,21 32,32 24,25 16,32 19,21 10,14 21,14" fill="#f59e0b" />
-      {/* podio izquierdo */}
-      <rect x="6" y="30" width="10" height="14" rx="1" fill="#f59e0b" opacity="0.85"/>
-      {/* podio centro */}
-      <rect x="19" y="24" width="10" height="20" rx="1" fill="#f59e0b"/>
-      {/* podio derecho */}
-      <rect x="32" y="33" width="10" height="11" rx="1" fill="#f59e0b" opacity="0.85"/>
-    </svg>
-  );
-}
-
-function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
-  return (
-    <div className="bg-slate-50 rounded-2xl p-6 flex flex-col gap-4 shadow-sm border border-slate-100 h-full">
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <PersonIcon />
-        <div>
-          <p className="font-bold text-slate-900 text-sm">{testimonial.name}</p>
-          <p className="text-xs text-slate-500">{testimonial.role}</p>
-        </div>
-      </div>
-
-      {/* Ícono trofeo centrado */}
-      <div className="flex justify-center">
-        <TrophyIcon />
-      </div>
-
-      {/* Texto */}
-      <p className="text-sm text-slate-700 leading-relaxed">
-        &ldquo;{testimonial.text}&rdquo;
-      </p>
-    </div>
-  );
-}
-
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
-  const [perPage, setPerPage] = useState(2);
+  const [perPage, setPerPage] = useState(3);
 
-  // Detectar tamaño pantalla
   useEffect(() => {
-    const update = () => setPerPage(window.innerWidth >= 768 ? 2 : 1);
+    const update = () => {
+      if (window.innerWidth < 640) setPerPage(1);
+      else if (window.innerWidth < 1024) setPerPage(2);
+      else setPerPage(3);
+    };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -96,70 +61,93 @@ export default function Testimonials() {
 
   const prev = () => setCurrent((c) => (c - 1 + totalSlides) % totalSlides);
 
-  // Auto-avance cada 4s
   useEffect(() => {
     const t = setInterval(next, 4000);
     return () => clearInterval(t);
   }, [next]);
 
-  const visible = testimonials.slice(
-    current * perPage,
-    current * perPage + perPage
-  );
+  const visible = testimonials.slice(current * perPage, current * perPage + perPage);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Título */}
-        <h2
-          className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-10"
-          style={{ fontFamily: "var(--font-plus-jakarta)" }}
-        >
-          Lo que dicen nuestros estudiantes
-        </h2>
+    <section className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <p className="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3">
+            Testimonios
+          </p>
+          <h2
+            className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
+            style={{ fontFamily: "var(--font-plus-jakarta)" }}
+          >
+            Lo que dicen nuestros estudiantes
+          </h2>
+          <p className="text-lg text-slate-600 max-w-xl mx-auto">
+            Historias reales de personas que transformaron su vida aprendiendo un idioma.
+          </p>
+        </div>
 
-        {/* Carrusel */}
-        <div className="relative">
-          {/* Cards visibles */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 min-h-[260px]">
-            {visible.map((t) => (
-              <TestimonialCard key={t.name} testimonial={t} />
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[280px]">
+          {visible.map((t) => (
+            <div
+              key={t.name}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col"
+            >
+              <Quote className="w-8 h-8 text-blue-100 fill-blue-100 mb-4" />
+
+              <div className="flex gap-0.5 mb-4">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star key={s} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                ))}
+              </div>
+
+              <p className="text-slate-700 text-sm leading-relaxed flex-1 mb-6">
+                &ldquo;{t.text}&rdquo;
+              </p>
+
+              <div className="flex items-center gap-3 border-t border-slate-50 pt-4">
+                <div className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
+                  {t.avatar}
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
+                  <p className="text-xs text-slate-500">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Controles */}
+        <div className="flex items-center justify-center gap-6 mt-8">
+          <button
+            onClick={prev}
+            className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-5 h-5 text-slate-600" />
+          </button>
+
+          <div className="flex gap-2">
+            {Array.from({ length: totalSlides }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current ? "w-5 h-2 bg-blue-600" : "w-2 h-2 bg-slate-300"
+                }`}
+              />
             ))}
           </div>
 
-          {/* Flechas */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all"
-              aria-label="Anterior"
-            >
-              <ChevronLeft className="w-5 h-5 text-slate-600" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex gap-2">
-              {Array.from({ length: totalSlides }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? "w-5 h-2 bg-blue-600"
-                      : "w-2 h-2 bg-slate-300"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all"
-              aria-label="Siguiente"
-            >
-              <ChevronRight className="w-5 h-5 text-slate-600" />
-            </button>
-          </div>
+          <button
+            onClick={next}
+            className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all"
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="w-5 h-5 text-slate-600" />
+          </button>
         </div>
       </div>
     </section>
