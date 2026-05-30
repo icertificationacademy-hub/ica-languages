@@ -36,6 +36,14 @@ const testimonials = [
     avatar: "EA",
     color: "bg-purple-500",
   },
+  {
+    name: "Luis Ángel Hernandez",
+    role: "Alumno",
+    text: "Estoy en el curso de francés y enseñan muy bien. Recomiendo mucho la escuela.",
+    rating: 5,
+    avatar: "LH",
+    color: "bg-pink-500",
+  },
 ];
 
 export default function Testimonials() {
