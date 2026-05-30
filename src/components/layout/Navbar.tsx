@@ -43,16 +43,16 @@ export default function Navbar() {
       style={{ backgroundColor: TEAL }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[76px]">
+        <div className="flex items-center justify-between h-[84px]">
 
-          {/* ── LOGO ── más grande */}
+          {/* ── LOGO ── */}
           <Link href="/" className="shrink-0">
             <Image
               src="/images/logo.png"
               alt="ICA Languages — Learn, grow, communicate"
-              width={260}
-              height={66}
-              className="h-[58px] w-auto object-contain"
+              width={300}
+              height={76}
+              className="h-[68px] w-auto object-contain"
               priority
             />
           </Link>

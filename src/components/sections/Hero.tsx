@@ -3,33 +3,44 @@ import { siteConfig } from "@/data/site";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-20">
-      {/*
-        IMAGEN DE FONDO — reemplaza /images/hero-students.jpg con tu foto real
-        (los dos alumnos con sudadera ICA Languages Student Crew)
-      */}
+    <section
+      className="relative min-h-screen flex flex-col overflow-hidden"
+      style={{ paddingTop: "84px" }} /* altura exacta del navbar */
+    >
+      {/* ── IMAGEN DE FONDO ── */}
       <div
         className="absolute inset-0 bg-no-repeat"
         style={{
           backgroundImage: "url('/images/Inicio.jpeg')",
           backgroundSize: "cover",
-          backgroundPosition: "center 20%",   /* sube el encuadre para ver caras y cuerpos */
+          backgroundPosition: "center top", /* ancla la imagen al tope → rostros siempre visibles */
         }}
       />
 
-      {/* Overlay oscuro semitransparente */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Overlay — más oscuro abajo para legibilidad del texto */}
+      <div className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.72) 100%)",
+        }}
+      />
 
-      {/* Contenido */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* ── ESPACIO LIBRE ARRIBA para que se vean los rostros ── */}
+      <div className="flex-1" /> {/* empuja el contenido hacia abajo */}
+
+      {/* ── CONTENIDO — pegado al fondo ── */}
+      <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-5 drop-shadow-lg"
-          style={{ fontFamily: "var(--font-plus-jakarta)", textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
+          className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 drop-shadow-lg"
+          style={{
+            fontFamily: "var(--font-plus-jakarta)",
+            textShadow: "0 2px 16px rgba(0,0,0,0.6)",
+          }}
         >
           ¡Aprende inglés con confianza!
         </h1>
 
-        <p className="text-xl sm:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow">
+        <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-xl mx-auto leading-relaxed drop-shadow">
           Clases prácticas, grupos pequeños y enfoque conversacional.
         </p>
 
@@ -37,13 +48,13 @@ export default function Hero() {
           href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, me interesa agendar una clase muestra gratuita`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-10 py-4 bg-white hover:bg-slate-100 text-slate-900 font-bold text-lg rounded-full transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+          className="inline-block px-10 py-4 bg-white hover:bg-slate-100 text-slate-900 font-bold text-base rounded-full transition-all shadow-xl hover:shadow-2xl hover:scale-105"
         >
           Agenda tu clase muestra
         </Link>
       </div>
 
-      {/* Botón WhatsApp flotante */}
+      {/* ── BOTÓN WHATSAPP FLOTANTE ── */}
       <a
         href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, quiero más información`}
         target="_blank"
