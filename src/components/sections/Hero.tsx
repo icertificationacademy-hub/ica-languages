@@ -27,7 +27,7 @@ export default function Hero() {
       />
 
       {/* Espaciador pequeño — texto queda debajo de los hombros */}
-      <div className="h-[8vh]" />
+      <div className="h-[20vh]" />
 
       {/* ── CONTENIDO ── */}
       <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-14">
