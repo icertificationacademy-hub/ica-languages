@@ -6,7 +6,6 @@ import WhyUs from "@/components/sections/WhyUs";
 import StatsSection from "@/components/sections/StatsSection";
 import PartnersSection from "@/components/sections/PartnersSection";
 import Testimonials from "@/components/sections/Testimonials";
-import CTASection from "@/components/sections/CTASection";
 
 export default function HomePage() {
   return (
@@ -19,7 +18,6 @@ export default function HomePage() {
       <StatsSection />
       <PartnersSection />
       <Testimonials />
-      <CTASection />
     </>
   );
 }
