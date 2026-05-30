@@ -13,15 +13,15 @@ export default function Hero() {
         style={{
           backgroundImage: "url('/images/Inicio.jpeg')",
           backgroundSize: "cover",
-          backgroundPosition: "center 15%", /* rostros visibles en el tercio superior */
+          backgroundPosition: "center 5%", /* imagen más arriba → más cabeza/rostro visible */
         }}
       />
 
       {/* Overlay uniforme */}
       <div className="absolute inset-0 bg-black/48" />
 
-      {/* ── ESPACIO LIBRE ARRIBA — sólo 28vh, no todo ── */}
-      <div className="h-[28vh]" />
+      {/* ── ESPACIO LIBRE ARRIBA ── */}
+      <div className="h-[40vh]" />
 
       {/* ── CONTENIDO centrado-bajo ── */}
       <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
