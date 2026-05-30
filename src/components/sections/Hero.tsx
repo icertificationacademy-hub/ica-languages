@@ -1,199 +1,57 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowRight, Play, Star, Users, Award } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-amber-50" />
+    <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-20">
+      {/*
+        IMAGEN DE FONDO — reemplaza /images/hero-students.jpg con tu foto real
+        (los dos alumnos con sudadera ICA Languages Student Crew)
+      */}
       <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(59,130,246,0.15) 0%, transparent 50%),
-                            radial-gradient(circle at 80% 20%, rgba(245,158,11,0.12) 0%, transparent 50%)`,
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/hero-students.jpg')" }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-100 rounded-full mb-6">
-              <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-              <span className="text-xs font-semibold text-blue-700">
-                Centro de Idiomas #1 en Apizaco, Tlaxcala
-              </span>
-            </div>
+      {/* Overlay oscuro semitransparente */}
+      <div className="absolute inset-0 bg-black/45" />
 
-            {/* Heading */}
-            <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-5"
-              style={{ fontFamily: "var(--font-plus-jakarta)" }}
-            >
-              ¡Aprende inglés{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #1e40af, #3b82f6)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                con confianza!
-              </span>
-            </h1>
+      {/* Contenido */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <h1
+          className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-5 drop-shadow-lg"
+          style={{ fontFamily: "var(--font-plus-jakarta)", textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
+        >
+          ¡Aprende inglés con confianza!
+        </h1>
 
-            <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg">
-              Clases prácticas, grupos pequeños y enfoque conversacional. En ICA
-              Languages no solo aprendes un idioma,{" "}
-              <strong className="text-slate-800">aprendes a usarlo.</strong>
-            </p>
+        <p className="text-xl sm:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow">
+          Clases prácticas, grupos pequeños y enfoque conversacional.
+        </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-10">
-              <Link
-                href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, me interesa agendar una clase muestra gratuita`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-blue-200 hover:shadow-xl"
-              >
-                Agenda tu Clase Muestra
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/cursos/ingles"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-slate-800 font-semibold rounded-xl border border-slate-200 transition-all"
-              >
-                <Play className="w-4 h-4 text-blue-600 fill-blue-600" />
-                Ver Cursos
-              </Link>
-            </div>
-
-            {/* Social Proof Pills */}
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {["bg-blue-500", "bg-amber-500", "bg-green-500", "bg-purple-500"].map(
-                    (color, i) => (
-                      <div
-                        key={i}
-                        className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center text-white text-xs font-bold`}
-                      >
-                        {["M", "J", "L", "E"][i]}
-                      </div>
-                    )
-                  )}
-                </div>
-                <div>
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-slate-500">+500 estudiantes felices</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-slate-100 shadow-sm">
-                <Award className="w-4 h-4 text-amber-500" />
-                <span className="text-xs font-medium text-slate-700">
-                  Certificaciones Cambridge
-                </span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-slate-100 shadow-sm">
-                <Users className="w-4 h-4 text-blue-500" />
-                <span className="text-xs font-medium text-slate-700">
-                  Grupos máx. 8 personas
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right — Visual Card Stack */}
-          <div className="relative lg:flex justify-center hidden">
-            {/* Main card */}
-            <div className="relative w-full max-w-md">
-              <div className="bg-white rounded-3xl shadow-2xl p-8 border border-slate-100">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <p className="text-sm text-slate-500">Próxima clase</p>
-                    <p className="font-bold text-slate-900">Inglés Intermedio B1</p>
-                  </div>
-                  <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl">
-                    🇺🇸
-                  </div>
-                </div>
-
-                {/* Progress */}
-                <div className="mb-6">
-                  <div className="flex justify-between text-sm text-slate-600 mb-2">
-                    <span>Progreso del nivel</span>
-                    <span className="font-semibold text-blue-700">68%</span>
-                  </div>
-                  <div className="w-full bg-slate-100 rounded-full h-2.5">
-                    <div
-                      className="bg-gradient-to-r from-blue-600 to-blue-400 h-2.5 rounded-full"
-                      style={{ width: "68%" }}
-                    />
-                  </div>
-                </div>
-
-                {/* Stats row */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  {[
-                    { label: "Lecciones", value: "24" },
-                    { label: "Horas", value: "36" },
-                    { label: "Nivel", value: "B1" },
-                  ].map((item) => (
-                    <div key={item.label} className="bg-slate-50 rounded-xl p-3 text-center">
-                      <p className="font-bold text-slate-900 text-lg">{item.value}</p>
-                      <p className="text-xs text-slate-500">{item.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <Link
-                  href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, quiero agendar mi clase muestra`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xl transition-all"
-                >
-                  Reserva tu lugar gratis
-                </Link>
-              </div>
-
-              {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-amber-400 text-white font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
-                ¡Gratis!
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-3 border border-slate-100 flex items-center gap-2">
-                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                  🏆
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-900">Cambridge Prep</p>
-                  <p className="text-xs text-slate-500">Certificación oficial</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Link
+          href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, me interesa agendar una clase muestra gratuita`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-10 py-4 bg-white hover:bg-slate-100 text-slate-900 font-bold text-lg rounded-full transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+        >
+          Agenda tu clase muestra
+        </Link>
       </div>
 
-      {/* Wave divider */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0 60L48 50C96 40 192 20 288 15C384 10 480 20 576 25C672 30 768 30 864 25C960 20 1056 10 1152 10C1248 10 1344 20 1392 25L1440 30V60H0Z"
-            fill="white"
-          />
+      {/* Botón WhatsApp flotante */}
+      <a
+        href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, quiero más información`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-full shadow-xl transition-all hover:scale-105"
+        aria-label="Contáctanos por WhatsApp"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
-      </div>
+        <span className="text-sm">¡Contáctanos!</span>
+      </a>
     </section>
   );
 }

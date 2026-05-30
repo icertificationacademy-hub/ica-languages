@@ -2,10 +2,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
-  --ica-blue: #1e40af;
-  --ica-blue-light: #3b82f6;
-  --ica-gold: #f59e0b;
+  --foreground: #1a1a1a;
+  /* ICA Brand */
+  --ica-teal: #2b7a78;
+  --ica-teal-dark: #1e5f5d;
+  --ica-teal-light: #3a9795;
+  --ica-orange: #f97316;
+  --ica-orange-dark: #ea6c0a;
 }
 
 @theme inline {

@@ -1,47 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, GraduationCap, ExternalLink } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink, Globe } from "lucide-react";
 import { navLinks, siteConfig } from "@/data/site";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(false);
-    setOpenDropdown(null);
-  }, [pathname]);
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
-          : "bg-white/90 backdrop-blur-sm"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "var(--ica-teal)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
+
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl text-blue-800 hover:text-blue-600 transition-colors"
-          >
-            <GraduationCap className="w-7 h-7 text-amber-500" strokeWidth={2.5} />
-            <span style={{ fontFamily: "var(--font-plus-jakarta)" }}>
-              ICA <span className="text-amber-500">Languages</span>
-            </span>
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            {/* Placeholder logo — reemplaza con tu imagen real */}
+            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden">
+              <span className="text-xs font-black text-center leading-tight" style={{ color: "var(--ica-teal)", fontSize: "10px" }}>
+                ICA
+              </span>
+            </div>
+            <div className="text-white">
+              <div className="text-2xl font-black leading-none tracking-tight">
+                ICA <span className="font-light">Languages</span>
+              </div>
+              <div className="text-xs text-white/70 font-light tracking-wide">
+                Learn, grow, communicate
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -54,12 +45,19 @@ export default function Navbar() {
                   onMouseEnter={() => setOpenDropdown(link.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 rounded-lg hover:bg-blue-50 transition-all">
-                    {link.label}
+                  <button
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-semibold transition-colors rounded-md ${
+                      pathname.startsWith(link.href)
+                        ? "text-orange-400 underline underline-offset-4"
+                        : "text-white hover:text-orange-300"
+                    }`}
+                  >
+                    {link.label.toUpperCase()}
                     <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
                   </button>
+                  {/* Dropdown */}
                   <div
-                    className={`absolute top-full left-0 w-52 bg-white rounded-xl shadow-lg border border-slate-100 py-1.5 transition-all duration-200 ${
+                    className={`absolute top-full left-0 w-52 bg-white rounded-xl shadow-xl border border-slate-100 py-2 transition-all duration-200 ${
                       openDropdown === link.label
                         ? "opacity-100 translate-y-0 pointer-events-auto"
                         : "opacity-0 -translate-y-2 pointer-events-none"
@@ -69,7 +67,10 @@ export default function Navbar() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+                        className="block px-4 py-2.5 text-sm text-slate-700 hover:text-white transition-colors"
+                        style={{ ["--hover-bg" as string]: "var(--ica-teal)" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--ica-teal)")}
+                        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
                       >
                         {child.label}
                       </Link>
@@ -80,80 +81,76 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
+                  className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${
                     pathname === link.href
-                      ? "text-blue-700 bg-blue-50"
-                      : "text-slate-700 hover:text-blue-700 hover:bg-blue-50"
+                      ? "text-orange-400 underline underline-offset-4"
+                      : "text-white hover:text-orange-300"
                   }`}
                 >
-                  {link.label}
+                  {link.label.toUpperCase()}
                 </Link>
               )
             )}
           </nav>
 
-          {/* CTA Buttons */}
+          {/* Right side */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
+            <a
               href={siteConfig.campus}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-50 transition-all"
+              className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white rounded-full transition-all shadow-md hover:shadow-lg"
+              style={{ backgroundColor: "var(--ica-orange)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--ica-orange-dark)")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--ica-orange)")}
             >
-              Campus <ExternalLink className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, me interesa agendar una clase muestra`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-semibold text-white bg-blue-700 rounded-lg hover:bg-blue-800 transition-all shadow-sm hover:shadow-md"
-            >
-              Clase Muestra Gratis
-            </Link>
+              ACCESO CAMPUS
+            </a>
+            <button className="flex items-center gap-1.5 px-3 py-2 text-sm text-white/80 hover:text-white transition-colors rounded-md">
+              <span>🇲🇽</span>
+              <span>Español</span>
+              <ChevronDown className="w-3 h-3" />
+            </button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+            className="lg:hidden p-2 text-white hover:text-orange-300 transition-colors"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          isOpen ? "max-h-screen" : "max-h-0"
         }`}
+        style={{ backgroundColor: "var(--ica-teal-dark)" }}
       >
-        <div className="bg-white border-t border-slate-100 px-4 py-4 space-y-1">
+        <div className="px-4 py-4 space-y-1">
           {navLinks.map((link) => (
             <div key={link.label}>
               {link.children ? (
                 <>
                   <button
-                    onClick={() =>
-                      setOpenDropdown(openDropdown === link.label ? null : link.label)
-                    }
-                    className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-semibold text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
+                    className="flex items-center justify-between w-full px-3 py-3 text-sm font-bold text-white hover:text-orange-300 transition-colors"
                   >
-                    {link.label}
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
-                        openDropdown === link.label ? "rotate-180" : ""
-                      }`}
-                    />
+                    {link.label.toUpperCase()}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === link.label ? "rotate-180" : ""}`} />
                   </button>
                   {openDropdown === link.label && (
-                    <div className="ml-3 mt-1 space-y-1 border-l-2 border-blue-100 pl-3">
+                    <div className="ml-4 border-l-2 border-white/20 pl-4 space-y-1 mb-2">
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-3 py-2 text-sm text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                          onClick={() => setIsOpen(false)}
+                          className="block py-2 text-sm text-white/80 hover:text-white transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -164,30 +161,24 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className="block px-3 py-2.5 text-sm font-semibold text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-3 text-sm font-bold text-white hover:text-orange-300 transition-colors"
                 >
-                  {link.label}
+                  {link.label.toUpperCase()}
                 </Link>
               )}
             </div>
           ))}
-          <div className="pt-3 space-y-2 border-t border-slate-100">
-            <Link
+          <div className="pt-3 border-t border-white/20">
+            <a
               href={siteConfig.campus}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-50 transition-all"
+              className="flex items-center justify-center w-full py-3 text-sm font-bold text-white rounded-full"
+              style={{ backgroundColor: "var(--ica-orange)" }}
             >
-              Acceso Campus <ExternalLink className="w-4 h-4" />
-            </Link>
-            <Link
-              href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, me interesa agendar una clase muestra`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold text-white bg-blue-700 rounded-lg hover:bg-blue-800 transition-all"
-            >
-              Clase Muestra Gratis
-            </Link>
+              ACCESO CAMPUS
+            </a>
           </div>
         </div>
       </div>
