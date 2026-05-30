@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/48" />
 
       {/* ── ESPACIO LIBRE ARRIBA ── */}
-      <div className="h-[40vh]" />
+      <div className="h-[20vh]" />
 
       {/* ── CONTENIDO centrado-bajo ── */}
       <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
