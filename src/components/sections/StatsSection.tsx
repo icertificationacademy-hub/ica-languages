@@ -24,7 +24,7 @@ function CircularProgress({
   const [count, setCount] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const radius = 70;
+  const radius = 90;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
@@ -49,40 +49,27 @@ function CircularProgress({
     <div className="flex flex-col items-center gap-3">
       {/* Círculo SVG */}
       <div className="relative">
-        <svg width="180" height="180" viewBox="0 0 180 180">
+        <svg width="220" height="220" viewBox="0 0 220 220">
           {/* Círculo de fondo (gris) */}
-          <circle
-            cx="90"
-            cy="90"
-            r={radius}
-            fill="none"
-            stroke="#e5e7eb"
-            strokeWidth="10"
-          />
+          <circle cx="110" cy="110" r={radius} fill="none" stroke="#e5e7eb" strokeWidth="12" />
           {/* Círculo de progreso (azul) */}
           <circle
-            cx="90"
-            cy="90"
-            r={radius}
-            fill="none"
-            stroke="#2563eb"
-            strokeWidth="10"
+            cx="110" cy="110" r={radius}
+            fill="none" stroke="#2563eb" strokeWidth="12"
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
-            transform="rotate(-90 90 90)"
+            transform="rotate(-90 110 110)"
             style={{ transition: "stroke-dashoffset 0.05s linear" }}
           />
         </svg>
 
         {/* Contenido interior */}
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-          {/* Estrella */}
-          <svg className="w-6 h-6 text-slate-500 fill-slate-500" viewBox="0 0 24 24">
+          <svg className="w-8 h-8 fill-slate-500" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
-          {/* Número animado */}
-          <span className="text-3xl font-bold text-slate-700 leading-none">
+          <span className="text-4xl font-bold text-slate-700 leading-none">
             {count}{suffix}
           </span>
         </div>

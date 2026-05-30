@@ -36,8 +36,8 @@ export default function PartnersSection() {
               }`}
               style={{
                 backgroundColor: p.bg,
-                width: "220px",
-                height: "120px",
+                width: "300px",
+                height: "160px",
               }}
             >
               <Image
