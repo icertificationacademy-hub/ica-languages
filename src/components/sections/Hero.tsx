@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ paddingTop: "84px" }}
+      style={{ paddingTop: "100px" }}
     >
       {/* ── IMAGEN DE FONDO ── */}
       <div
