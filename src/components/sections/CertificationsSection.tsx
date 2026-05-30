@@ -37,7 +37,7 @@ export default function CertificationsSection() {
 
           {/* CARRUSEL izquierdo */}
           <div className="relative group">
-            <div className="relative w-full aspect-square max-w-md mx-auto overflow-hidden rounded-2xl shadow-xl bg-blue-50">
+            <div className="relative w-full aspect-square max-w-md mx-auto overflow-hidden rounded-2xl shadow-xl bg-white">
               {certImages.map((img, i) => (
                 <div
                   key={img.src}
@@ -51,7 +51,7 @@ export default function CertificationsSection() {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-contain p-2"
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority={i === 0}
                   />
