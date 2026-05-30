@@ -13,7 +13,7 @@ export default function Hero() {
         style={{
           backgroundImage: "url('/images/Inicio.jpeg')",
           backgroundSize: "cover",
-          backgroundPosition: "center 8%",
+          backgroundPosition: "center 13%",
         }}
       />
 
