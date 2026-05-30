@@ -13,22 +13,17 @@ export default function Hero() {
         style={{
           backgroundImage: "url('/images/Inicio.jpeg')",
           backgroundSize: "cover",
-          backgroundPosition: "center top", /* ancla la imagen al tope → rostros siempre visibles */
+          backgroundPosition: "center 15%", /* rostros visibles en el tercio superior */
         }}
       />
 
-      {/* Overlay — más oscuro abajo para legibilidad del texto */}
-      <div className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.72) 100%)",
-        }}
-      />
+      {/* Overlay uniforme */}
+      <div className="absolute inset-0 bg-black/48" />
 
-      {/* ── ESPACIO LIBRE ARRIBA para que se vean los rostros ── */}
-      <div className="flex-1" /> {/* empuja el contenido hacia abajo */}
+      {/* ── ESPACIO LIBRE ARRIBA — sólo 28vh, no todo ── */}
+      <div className="h-[28vh]" />
 
-      {/* ── CONTENIDO — pegado al fondo ── */}
+      {/* ── CONTENIDO centrado-bajo ── */}
       <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <h1
           className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 drop-shadow-lg"
