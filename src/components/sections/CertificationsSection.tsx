@@ -4,13 +4,12 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// 5 imágenes reales de certificaciones
 const certImages = [
   { src: "/images/certifi1.png", alt: "Certificación DELF - ICA Languages" },
   { src: "/images/certifi2.png", alt: "Certificación TCE - Alumna ICA Languages" },
   { src: "/images/certifi3.png", alt: "Certificación TCE - Alumno ICA Languages" },
   { src: "/images/certifi4.png", alt: "Certificación TCE - ICA Languages" },
-  { src: "/images/certifi5.png", alt: "Certificación TCE - ICA Languages" },
+  { src: "/images/certifi5.png", alt: "Certificación DELF - ICA Languages" },
 ];
 
 export default function CertificationsSection() {
@@ -24,7 +23,6 @@ export default function CertificationsSection() {
     setCurrent((c) => (c - 1 + certImages.length) % certImages.length);
   };
 
-  // Auto-avance cada 3.5 segundos
   useEffect(() => {
     const timer = setInterval(next, 3500);
     return () => clearInterval(timer);
@@ -35,13 +33,14 @@ export default function CertificationsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-          {/* CARRUSEL izquierdo */}
-          <div className="relative group">
-            <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden rounded-xl shadow-lg bg-white">
+          {/* ── CARRUSEL ── */}
+          <div className="relative group flex flex-col items-center">
+            {/* Contenedor con tamaño fijo */}
+            <div className="relative w-[420px] max-w-full h-[480px] rounded-2xl shadow-lg overflow-hidden bg-white">
               {certImages.map((img, i) => (
                 <div
                   key={img.src}
-                  className={`absolute inset-0 transition-all duration-500 ${
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
                     i === current
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-95 pointer-events-none"
@@ -50,28 +49,28 @@ export default function CertificationsSection() {
                   <Image
                     src={img.src}
                     alt={img.alt}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    width={420}
+                    height={480}
+                    className="w-full h-full object-contain"
                     priority={i === 0}
                   />
                 </div>
               ))}
 
-              {/* Flechas */}
+              {/* Flechas — visibles al hover */}
               <button
                 onClick={prev}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
                 aria-label="Anterior"
               >
-                <ChevronLeft className="w-4 h-4 text-slate-700" />
+                <ChevronLeft className="w-5 h-5 text-slate-700" />
               </button>
               <button
                 onClick={next}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
                 aria-label="Siguiente"
               >
-                <ChevronRight className="w-4 h-4 text-slate-700" />
+                <ChevronRight className="w-5 h-5 text-slate-700" />
               </button>
             </div>
 
@@ -81,7 +80,7 @@ export default function CertificationsSection() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  aria-label={`Ir a imagen ${i + 1}`}
+                  aria-label={`Imagen ${i + 1}`}
                   className={`rounded-full transition-all duration-300 ${
                     i === current
                       ? "w-5 h-2 bg-teal-600"
@@ -92,7 +91,7 @@ export default function CertificationsSection() {
             </div>
           </div>
 
-          {/* Texto derecho */}
+          {/* ── TEXTO DERECHO ── */}
           <div>
             <h2
               className="text-3xl sm:text-4xl font-bold text-slate-900 mb-5"
@@ -109,9 +108,8 @@ export default function CertificationsSection() {
               <strong>válido a nivel nacional e internacional.</strong>
             </p>
 
-            {/* Logos instituciones */}
+            {/* Logos */}
             <div className="flex flex-wrap items-center gap-8">
-              {/* Cambridge */}
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded flex items-center justify-center bg-[#c8102e]">
                   <span className="text-white font-black text-sm">C</span>
@@ -122,7 +120,6 @@ export default function CertificationsSection() {
                 </div>
               </div>
 
-              {/* Alianza Francesa */}
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-full border-2 border-red-600 flex items-center justify-center">
                   <span className="text-red-600 font-black text-sm italic">af</span>
@@ -133,7 +130,6 @@ export default function CertificationsSection() {
                 </div>
               </div>
 
-              {/* Oxford */}
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded flex items-center justify-center bg-[#002147]">
                   <span className="text-white font-black text-sm">O</span>
