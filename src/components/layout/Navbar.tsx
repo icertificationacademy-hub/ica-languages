@@ -13,9 +13,9 @@ const ORANGE = "#FD7C46";
 const ORANGE_DARK = "#e06535";
 
 const languages = [
-  { code: "es", label: "Español", flag: "🇲🇽" },
-  { code: "fr", label: "Francés", flag: "🇫🇷" },
-  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "es", label: "Español", flag: "MX" },
+  { code: "fr", label: "Francés", flag: "FR" },
+  { code: "en", label: "English", flag: "EN" },
 ];
 
 export default function Navbar() {
