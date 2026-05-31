@@ -53,6 +53,7 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-white text-slate-900">
         <Navbar />
