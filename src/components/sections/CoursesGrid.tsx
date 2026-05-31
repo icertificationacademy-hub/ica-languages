@@ -81,15 +81,9 @@ export default function CoursesGrid() {
                 Por ahora muestra el placeholder emoji grande
               */}
               <div className="flex-1 flex items-center justify-center py-6 px-4">
-                <div
-                  className="w-32 h-32 rounded-full bg-cover bg-center bg-no-repeat flex items-center justify-center text-6xl"
-                  style={{ backgroundImage: `url('${course.image}')` }}
-                >
-                  {/* Se muestra sólo si la imagen no carga */}
-                  <span role="img" aria-label={course.title}>
-                    {course.placeholder}
-                  </span>
-                </div>
+                <span className="text-8xl" role="img" aria-label={course.title}>
+                  {course.placeholder}
+                </span>
               </div>
 
               {/* CTA */}
