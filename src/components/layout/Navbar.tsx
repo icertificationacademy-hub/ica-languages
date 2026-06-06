@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { navLinks, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
+import { useTranslations, useLocale } from "next-intl";
+import { Link, useRouter, usePathname } from "@/i18n/navigation";
 
 const TEAL = "#296570";
 const TEAL_DARK = "#1e4f58";
@@ -13,20 +13,55 @@ const ORANGE = "#FD7C46";
 const ORANGE_DARK = "#e06535";
 
 const languages = [
-  { code: "es", label: "Español", flag: "MX" },
-  { code: "fr", label: "Francés", flag: "FR" },
-  { code: "en", label: "English", flag: "EN" },
+  { code: "es", label: "ES", fullLabel: "Español", flag: "🇲🇽" },
+  { code: "en", label: "EN", fullLabel: "English", flag: "🇺🇸" },
+  { code: "fr", label: "FR", fullLabel: "Français", flag: "🇫🇷" },
 ];
 
 export default function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [langOpen, setLangOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState(languages[0]);
   const pathname = usePathname();
   const langRef = useRef<HTMLDivElement>(null);
 
-  // Cierra el dropdown de idioma al hacer clic fuera
+  const activeLang = languages.find((l) => l.code === locale) ?? languages[0];
+
+  const navLinks = [
+    { label: t("inicio"), href: "/" },
+    {
+      label: t("cursos"),
+      href: "/cursos",
+      children: [
+        { label: t("ingles"), href: "/cursos/ingles" },
+        { label: t("inglesNinos"), href: "/cursos/ingles-ninos" },
+        { label: t("frances"), href: "/cursos/frances" },
+        { label: t("inglesEmpresa"), href: "/cursos/ingles-empresa" },
+      ],
+    },
+    {
+      label: t("certificaciones"),
+      href: "/certificaciones",
+      children: [
+        { label: t("cambridge"), href: "/certificaciones/cambridge" },
+        { label: t("alianzaFrancesa"), href: "/certificaciones/alianza-francesa" },
+        { label: t("constanciaNivel"), href: "/certificaciones/constancia-de-nivel" },
+      ],
+    },
+    {
+      label: t("nosotros"),
+      href: "/nosotros",
+      children: [
+        { label: t("quienesSomos"), href: "/nosotros" },
+        { label: t("uneteAlEquipo"), href: "/nosotros/unete-al-equipo" },
+      ],
+    },
+  ];
+
+  // Close lang dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
@@ -36,6 +71,12 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  function switchLocale(newLocale: string) {
+    router.replace(pathname, { locale: newLocale });
+    setLangOpen(false);
+    setIsOpen(false);
+  }
 
   return (
     <header
@@ -69,7 +110,7 @@ export default function Navbar() {
                 >
                   <button
                     className={`flex items-center gap-1 px-4 py-2 text-sm font-bold tracking-wide transition-colors ${
-                      pathname.startsWith(link.href)
+                      pathname.includes(link.href) && link.href !== "/"
                         ? "text-orange-400"
                         : "text-white hover:text-orange-300"
                     }`}
@@ -78,7 +119,7 @@ export default function Navbar() {
                     <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
                   </button>
 
-                  {/* Dropdown menú */}
+                  {/* Dropdown menu */}
                   <div
                     className={`absolute top-full left-0 w-52 bg-white rounded-b-xl shadow-xl overflow-hidden transition-all duration-200 ${
                       openDropdown === link.label
@@ -113,8 +154,10 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   className={`px-4 py-2 text-sm font-bold tracking-wide transition-colors ${
-                    pathname === link.href
-                      ? "text-orange-400 underline underline-offset-4 decoration-2"
+                    pathname.endsWith("/") || pathname === `/${locale}`
+                      ? link.href === "/"
+                        ? "text-orange-400 underline underline-offset-4 decoration-2"
+                        : "text-white hover:text-orange-300"
                       : "text-white hover:text-orange-300"
                   }`}
                 >
@@ -124,9 +167,9 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* ── ACCESO CAMPUS + IDIOMA ── */}
+          {/* ── CAMPUS ACCESS + LANGUAGE ── */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Botón campus */}
+            {/* Campus button */}
             <a
               href={siteConfig.campus}
               target="_blank"
@@ -136,10 +179,10 @@ export default function Navbar() {
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ORANGE_DARK)}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ORANGE)}
             >
-              ACCESO CAMPUS
+              {t("accesoCampus")}
             </a>
 
-            {/* ── SELECTOR DE IDIOMA ── */}
+            {/* ── LANGUAGE SELECTOR ── */}
             <div ref={langRef} className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
@@ -154,7 +197,7 @@ export default function Navbar() {
                 />
               </button>
 
-              {/* Dropdown idiomas */}
+              {/* Language dropdown */}
               <div
                 className={`absolute top-full right-0 w-40 rounded-b-xl shadow-xl overflow-hidden transition-all duration-200 ${
                   langOpen
@@ -166,19 +209,16 @@ export default function Navbar() {
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    onClick={() => {
-                      setActiveLang(lang);
-                      setLangOpen(false);
-                    }}
+                    onClick={() => switchLocale(lang.code)}
                     className={`flex items-center gap-3 w-full px-4 py-3 text-sm font-semibold text-left border-b transition-colors ${
-                      activeLang.code === lang.code
+                      locale === lang.code
                         ? "text-white bg-white/10"
                         : "text-white/80 hover:text-white hover:bg-white/10"
                     } last:border-0`}
                     style={{ borderColor: "rgba(255,255,255,0.1)" }}
                   >
                     <span className="text-base">{lang.flag}</span>
-                    <span>{lang.label}</span>
+                    <span>{lang.fullLabel}</span>
                   </button>
                 ))}
               </div>
@@ -248,18 +288,18 @@ export default function Navbar() {
             </div>
           ))}
 
-          {/* Idioma en móvil */}
+          {/* Language in mobile */}
           <div className="pt-2 border-t border-white/20">
             <p className="px-3 py-2 text-xs font-semibold text-white/50 uppercase tracking-wider">
-              Idioma
+              {t("idioma")}
             </p>
             <div className="flex gap-2 px-3">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  onClick={() => setActiveLang(lang)}
+                  onClick={() => switchLocale(lang.code)}
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                    activeLang.code === lang.code
+                    locale === lang.code
                       ? "bg-white/20 text-white"
                       : "text-white/60 hover:text-white"
                   }`}
@@ -279,7 +319,7 @@ export default function Navbar() {
               className="flex items-center justify-center w-full py-3 text-sm font-black text-white rounded-full"
               style={{ backgroundColor: ORANGE }}
             >
-              ACCESO CAMPUS
+              {t("accesoCampus")}
             </a>
           </div>
         </div>

@@ -1,14 +1,13 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/data/site";
+import { getTranslations } from "next-intl/server";
 
-export default function DemoClassSection() {
+export default async function DemoClassSection() {
+  const t = await getTranslations("home");
+
   return (
     <section className="py-4 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/*
-          IMAGEN DE FONDO — reemplaza /images/demo-class.jpg
-          con la foto de alumnos en la clase (la chica con laptop y el chico a su lado)
-        */}
         <div
           className="relative rounded-3xl overflow-hidden min-h-[420px] flex items-center bg-cover bg-center"
           style={{ backgroundImage: "url('/images/clasemuestra.jpeg')", backgroundPosition: "center 20%" }}
@@ -16,26 +15,24 @@ export default function DemoClassSection() {
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/55 rounded-3xl" />
 
-          {/* Contenido */}
+          {/* Content */}
           <div className="relative z-10 px-8 sm:px-14 py-16 max-w-2xl">
             <h2
               className="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight"
               style={{ fontFamily: "var(--font-plus-jakarta)" }}
             >
-              Agenda una clase muestra
+              {t("demoTitle")}
             </h2>
             <p className="text-white/85 text-lg leading-relaxed mb-8">
-              Conoce nuestra metodología y resuelve todas tus dudas. Agenda una clase
-              muestra gratuita y vive la experiencia ICA Languages. Te damos las
-              herramientas, tú das el primer paso.
+              {t("demoText")}
             </p>
             <Link
-              href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, quiero reservar mi lugar para una clase muestra gratuita`}
+              href={`https://wa.me/${siteConfig.whatsapp}?text=Hola, quiero reservar mi lugar para una clase muestra gratuita` as never}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3.5 bg-white hover:bg-slate-100 text-slate-900 font-black text-sm tracking-widest rounded-full transition-all shadow-lg hover:shadow-xl border-2 border-white"
             >
-              RESERVA TU LUGAR
+              {t("demoButton")}
             </Link>
           </div>
         </div>

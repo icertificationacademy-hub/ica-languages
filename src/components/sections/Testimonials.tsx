@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const testimonials = [
+const testimonialsData = [
   {
     name: "María Fernanda Gutiérrez",
-    role: "Alumno",
     text: "Me inscribí al curso de inglés y la verdad me está encantando. La maestra está muy bien preparada y explica superbién. ¡Excelente servicio!",
     rating: 5,
     avatar: "MF",
@@ -14,7 +14,6 @@ const testimonials = [
   },
   {
     name: "José Antonio",
-    role: "Alumno",
     text: "Tomé un curso de preparación para certificación, aprendí bastante y obtuve un puntaje alto.",
     rating: 5,
     avatar: "JA",
@@ -22,7 +21,6 @@ const testimonials = [
   },
   {
     name: "Luis Ángel Hernandez",
-    role: "Alumno",
     text: "Estoy en el curso de francés y enseñan muy bien. Recomiendo mucho la escuela.",
     rating: 5,
     avatar: "LH",
@@ -30,23 +28,22 @@ const testimonials = [
   },
   {
     name: "Estefany Aquino",
-    role: "Alumno",
     text: "Me metí al curso de preparación para TOEFL porque lo necesitaba para la universidad y me gustó tanto la forma en que enseñaban que seguí en el curso de inglés regular.",
     rating: 5,
     avatar: "EA",
     color: "bg-purple-500",
   },
   {
-    name: "Luis Ángel Hernandez",
-    role: "Alumno",
-    text: "Estoy en el curso de francés y enseñan muy bien. Recomiendo mucho la escuela.",
+    name: "Carlos Mendoza",
+    text: "Mi hijo lleva 8 meses y su progreso es increíble. Aprende jugando y siempre quiere ir a sus clases.",
     rating: 5,
-    avatar: "LH",
+    avatar: "CM",
     color: "bg-pink-500",
   },
 ];
 
 export default function Testimonials() {
+  const t = useTranslations("home");
   const [current, setCurrent] = useState(0);
   const [perPage, setPerPage] = useState(3);
 
@@ -61,7 +58,7 @@ export default function Testimonials() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const totalSlides = Math.ceil(testimonials.length / perPage);
+  const totalSlides = Math.ceil(testimonialsData.length / perPage);
 
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % totalSlides);
@@ -70,11 +67,11 @@ export default function Testimonials() {
   const prev = () => setCurrent((c) => (c - 1 + totalSlides) % totalSlides);
 
   useEffect(() => {
-    const t = setInterval(next, 4000);
-    return () => clearInterval(t);
+    const timer = setInterval(next, 4000);
+    return () => clearInterval(timer);
   }, [next]);
 
-  const visible = testimonials.slice(current * perPage, current * perPage + perPage);
+  const visible = testimonialsData.slice(current * perPage, current * perPage + perPage);
 
   return (
     <section className="py-20 bg-slate-50">
@@ -82,24 +79,24 @@ export default function Testimonials() {
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3">
-            Testimonios
+            {t("testimonialsLabel")}
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
             style={{ fontFamily: "var(--font-plus-jakarta)" }}
           >
-            Lo que dicen nuestros estudiantes
+            {t("testimonialsTitle")}
           </h2>
           <p className="text-lg text-slate-600 max-w-xl mx-auto">
-            Historias reales de personas que transformaron su vida aprendiendo un idioma.
+            {t("testimonialsSubtitle")}
           </p>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[280px]">
-          {visible.map((t) => (
+          {visible.map((item) => (
             <div
-              key={t.name}
+              key={item.name}
               className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col"
             >
               <Quote className="w-8 h-8 text-blue-100 fill-blue-100 mb-4" />
@@ -111,28 +108,28 @@ export default function Testimonials() {
               </div>
 
               <p className="text-slate-700 text-sm leading-relaxed flex-1 mb-6">
-                &ldquo;{t.text}&rdquo;
+                &ldquo;{item.text}&rdquo;
               </p>
 
               <div className="flex items-center gap-3 border-t border-slate-50 pt-4">
-                <div className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
-                  {t.avatar}
+                <div className={`w-10 h-10 rounded-full ${item.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
+                  {item.avatar}
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
-                  <p className="text-xs text-slate-500">{t.role}</p>
+                  <p className="font-semibold text-slate-900 text-sm">{item.name}</p>
+                  <p className="text-xs text-slate-500">{t("alumno")}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Controles */}
+        {/* Controls */}
         <div className="flex items-center justify-center gap-6 mt-8">
           <button
             onClick={prev}
             className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all"
-            aria-label="Anterior"
+            aria-label="Previous"
           >
             <ChevronLeft className="w-5 h-5 text-slate-600" />
           </button>
@@ -152,7 +149,7 @@ export default function Testimonials() {
           <button
             onClick={next}
             className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center shadow-sm transition-all"
-            aria-label="Siguiente"
+            aria-label="Next"
           >
             <ChevronRight className="w-5 h-5 text-slate-600" />
           </button>

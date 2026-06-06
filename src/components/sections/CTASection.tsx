@@ -1,3 +1,4 @@
+// CTASection uses external links only, no locale routing needed
 import Link from "next/link";
 import { MessageCircle, Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";

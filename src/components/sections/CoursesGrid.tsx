@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
-// Bandera USA
+// Flag USA
 function FlagUSA() {
   return (
     <svg viewBox="0 0 60 40" className="w-24 h-16 rounded-lg shadow-md" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +17,7 @@ function FlagUSA() {
   );
 }
 
-// Bandera UK
+// Flag UK
 function FlagUK() {
   return (
     <svg viewBox="0 0 60 40" className="w-24 h-16 rounded-lg shadow-md" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +30,7 @@ function FlagUK() {
   );
 }
 
-// Bandera Francia
+// Flag France
 function FlagFR() {
   return (
     <svg viewBox="0 0 60 40" className="w-28 h-20 rounded-lg shadow-md" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +41,7 @@ function FlagFR() {
   );
 }
 
-// Ícono empresa
+// Company icon
 function IconEmpresa() {
   return (
     <svg viewBox="0 0 60 60" className="w-20 h-20" xmlns="http://www.w3.org/2000/svg">
@@ -53,47 +54,47 @@ function IconEmpresa() {
         </linearGradient>
       </defs>
       <rect x="16" y="5" width="28" height="12" rx="1" fill="#475569"/>
-      {/* Ventanas */}
       {[0,1,2].map(col => [0,1,2,3].map(row => (
         <rect key={`${col}-${row}`} x={16 + col*11} y={22 + row*10} width="7" height="6" rx="1" fill="#7dd3fc" opacity="0.9"/>
       )))}
-      {/* Puerta */}
       <rect x="24" y="45" width="12" height="12" rx="1" fill="#334155"/>
     </svg>
   );
 }
 
-const mainCourses = [
-  {
-    id: "ingles",
-    title: "Curso de inglés",
-    description: "Clases dinámicas, niveles bien estructurados y enfoque comunicativo. Aprende a expresarte con seguridad en inglés.",
-    href: "/cursos/ingles",
-    borderColor: "#f87171",
-    bgAccent: "rgba(248, 113, 113, 0.08)",
-    icon: <div className="flex gap-2 items-center justify-center"><FlagUSA /><FlagUK /></div>,
-  },
-  {
-    id: "frances",
-    title: "Curso de Francés",
-    description: "Conecta con la cultura francesa mientras aprendes el idioma de forma práctica y divertida.",
-    href: "/cursos/frances",
-    borderColor: "#60a5fa",
-    bgAccent: "rgba(96, 165, 250, 0.08)",
-    icon: <div className="flex items-center justify-center"><FlagFR /></div>,
-  },
-  {
-    id: "ingles-empresa",
-    title: "Inglés para Empresa",
-    description: "Entrenamiento lingüístico para equipos de trabajo. Contenido adaptado a tu giro empresarial y metas profesionales.",
-    href: "/cursos/ingles-empresa",
-    borderColor: "#f87171",
-    bgAccent: "rgba(248, 113, 113, 0.08)",
-    icon: <div className="flex items-center justify-center"><IconEmpresa /></div>,
-  },
-];
+export default async function CoursesGrid() {
+  const t = await getTranslations("home");
 
-export default function CoursesGrid() {
+  const mainCourses = [
+    {
+      id: "ingles",
+      title: t("courseInglesTitle"),
+      description: t("courseInglesDesc"),
+      href: "/cursos/ingles" as const,
+      borderColor: "#f87171",
+      bgAccent: "rgba(248, 113, 113, 0.08)",
+      icon: <div className="flex gap-2 items-center justify-center"><FlagUSA /><FlagUK /></div>,
+    },
+    {
+      id: "frances",
+      title: t("courseFrancesTitle"),
+      description: t("courseFrancesDesc"),
+      href: "/cursos/frances" as const,
+      borderColor: "#60a5fa",
+      bgAccent: "rgba(96, 165, 250, 0.08)",
+      icon: <div className="flex items-center justify-center"><FlagFR /></div>,
+    },
+    {
+      id: "ingles-empresa",
+      title: t("courseEmpresaTitle"),
+      description: t("courseEmpresaDesc"),
+      href: "/cursos/ingles-empresa" as const,
+      borderColor: "#f87171",
+      bgAccent: "rgba(248, 113, 113, 0.08)",
+      icon: <div className="flex items-center justify-center"><IconEmpresa /></div>,
+    },
+  ];
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +102,7 @@ export default function CoursesGrid() {
           className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-12"
           style={{ fontFamily: "var(--font-plus-jakarta)" }}
         >
-          Tu próximo idioma comienza aquí
+          {t("coursesTitle")}
         </h2>
 
         <div className="grid sm:grid-cols-3 gap-6">
@@ -127,7 +128,7 @@ export default function CoursesGrid() {
                   href={course.href}
                   className="flex items-center justify-center w-full py-3 bg-slate-900 hover:bg-slate-700 text-white font-bold text-sm rounded-full transition-all"
                 >
-                  Más información
+                  {t("masInfo")}
                 </Link>
               </div>
             </div>

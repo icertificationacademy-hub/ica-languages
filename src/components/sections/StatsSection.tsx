@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const statsData = [
-  { value: 4, suffix: "%", label: "Idiomas", percent: 4 },
-  { value: 95, suffix: "%", label: "Éxito", percent: 95 },
-  { value: 80, suffix: "+", label: "Estudiantes", percent: 80 },
-];
+import { useTranslations } from "next-intl";
 
 function CircularProgress({
   percent,
@@ -31,7 +26,6 @@ function CircularProgress({
   useEffect(() => {
     if (!started) return;
 
-    // Animar número
     const duration = 1800;
     const startTime = performance.now();
     const animate = (now: number) => {
@@ -47,12 +41,9 @@ function CircularProgress({
 
   return (
     <div className="flex flex-col items-center gap-3">
-      {/* Círculo SVG */}
       <div className="relative">
         <svg width="220" height="220" viewBox="0 0 220 220">
-          {/* Círculo de fondo (gris) */}
           <circle cx="110" cy="110" r={radius} fill="none" stroke="#e5e7eb" strokeWidth="12" />
-          {/* Círculo de progreso (azul) */}
           <circle
             cx="110" cy="110" r={radius}
             fill="none" stroke="#2563eb" strokeWidth="12"
@@ -64,7 +55,6 @@ function CircularProgress({
           />
         </svg>
 
-        {/* Contenido interior */}
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
           <svg className="w-8 h-8 fill-slate-500" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -75,15 +65,21 @@ function CircularProgress({
         </div>
       </div>
 
-      {/* Label */}
       <p className="text-sm text-slate-500 font-medium">{label}</p>
     </div>
   );
 }
 
 export default function StatsSection() {
+  const t = useTranslations("home");
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
+
+  const statsData = [
+    { value: 4, suffix: "", label: t("statIdiomas"), percent: 4 },
+    { value: 95, suffix: "%", label: t("statExito"), percent: 95 },
+    { value: 80, suffix: "+", label: t("statEstudiantes"), percent: 80 },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -102,15 +98,13 @@ export default function StatsSection() {
   return (
     <section className="py-16 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Título */}
         <h2
           className="text-3xl sm:text-4xl font-black text-slate-900 text-center mb-12"
           style={{ fontFamily: "var(--font-plus-jakarta)" }}
         >
-          Resultados
+          {t("statsTitle")}
         </h2>
 
-        {/* Círculos */}
         <div className="flex flex-wrap justify-center gap-16">
           {statsData.map((stat) => (
             <CircularProgress

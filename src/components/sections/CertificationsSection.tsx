@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const certImages = [
   { src: "/images/certifi1.png", alt: "Certificación DELF - ICA Languages" },
@@ -13,6 +14,7 @@ const certImages = [
 ];
 
 export default function CertificationsSection() {
+  const t = useTranslations("home");
   const [current, setCurrent] = useState(0);
 
   const next = useCallback(() => {
@@ -33,9 +35,8 @@ export default function CertificationsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-          {/* ── CARRUSEL ── */}
+          {/* ── CAROUSEL ── */}
           <div className="relative group flex flex-col items-center">
-            {/* Contenedor con tamaño fijo */}
             <div className="relative w-[420px] max-w-full h-[480px] rounded-2xl shadow-lg overflow-hidden bg-white">
               {certImages.map((img, i) => (
                 <div
@@ -57,18 +58,17 @@ export default function CertificationsSection() {
                 </div>
               ))}
 
-              {/* Flechas — visibles al hover */}
               <button
                 onClick={prev}
                 className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label="Anterior"
+                aria-label="Previous"
               >
                 <ChevronLeft className="w-5 h-5 text-slate-700" />
               </button>
               <button
                 onClick={next}
                 className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label="Siguiente"
+                aria-label="Next"
               >
                 <ChevronRight className="w-5 h-5 text-slate-700" />
               </button>
@@ -80,7 +80,7 @@ export default function CertificationsSection() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  aria-label={`Imagen ${i + 1}`}
+                  aria-label={`Image ${i + 1}`}
                   className={`rounded-full transition-all duration-300 ${
                     i === current
                       ? "w-5 h-2 bg-teal-600"
@@ -91,24 +91,18 @@ export default function CertificationsSection() {
             </div>
           </div>
 
-          {/* ── TEXTO DERECHO ── */}
+          {/* ── RIGHT TEXT ── */}
           <div>
             <h2
               className="text-3xl sm:text-4xl font-bold text-slate-900 mb-5"
               style={{ fontFamily: "var(--font-plus-jakarta)" }}
             >
-              Certificaciones Internacionales
+              {t("certTitle")}
             </h2>
             <p className="text-lg text-slate-700 leading-relaxed mb-8">
-              <strong>En ICA Languages, tu preparación tiene respaldo internacional.</strong>{" "}
-              Supera tus metas con <strong>certificaciones oficiales</strong> de instituciones
-              reconocidas como <strong>Cambridge</strong> y la{" "}
-              <strong>Alianza Francesa</strong>. Nuestro compromiso es que tu esfuerzo
-              tenga un valor real,{" "}
-              <strong>válido a nivel nacional e internacional.</strong>
+              {t("certText")}
             </p>
 
-            {/* Logos instituciones — imagen real */}
             <div className="mt-2">
               <Image
                 src="/images/certificaciones.png"
