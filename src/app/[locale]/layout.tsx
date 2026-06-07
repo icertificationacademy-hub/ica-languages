@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   },
   description:
     "Aprende inglés y francés con confianza en ICA Languages, Apizaco Tlaxcala. Grupos pequeños, enfoque conversacional y certificaciones Cambridge y Alianza Francesa.",
+  icons: {
+    icon: "/images/logo.png",
+  },
   keywords: [
     "cursos de inglés Apizaco",
     "cursos de francés Tlaxcala",

@@ -17,6 +17,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "ICA Languages",
   description: "Aprende inglés y francés con confianza en ICA Languages, Apizaco Tlaxcala.",
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({

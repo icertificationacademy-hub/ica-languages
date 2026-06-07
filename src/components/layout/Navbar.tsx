@@ -21,7 +21,7 @@ const languages = [
 function FlagIcon({ code }: { code: string }) {
   if (code === "es") {
     return (
-      <svg className="w-5 h-5 rounded-md border border-white/20 shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-[28px] h-[18px] rounded-sm shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="10" height="20" fill="#006847" />
         <rect x="10" width="10" height="20" fill="#FFFFFF" />
         <rect x="20" width="10" height="20" fill="#C8102E" />
@@ -31,7 +31,7 @@ function FlagIcon({ code }: { code: string }) {
   }
   if (code === "en") {
     return (
-      <svg className="w-5 h-5 rounded-md border border-white/20 shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-[28px] h-[18px] rounded-sm shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="30" height="20" fill="#B22234" />
         <path d="M0,1.5 H30 M0,4.5 H30 M0,7.5 H30 M0,10.5 H30 M0,13.5 H30 M0,16.5 H30" stroke="#FFFFFF" strokeWidth="1.5" />
         <rect width="12" height="11" fill="#3C3B6E" />
@@ -50,7 +50,7 @@ function FlagIcon({ code }: { code: string }) {
   }
   if (code === "fr") {
     return (
-      <svg className="w-5 h-5 rounded-md border border-white/20 shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-[28px] h-[18px] rounded-sm shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="10" height="20" fill="#0055A5" />
         <rect x="10" width="10" height="20" fill="#FFFFFF" />
         <rect x="20" width="10" height="20" fill="#EF4135" />
