@@ -301,5 +301,27 @@
     "tituloTitle": "Level certificate for graduation",
     "tituloDesc": "If you need to prove your English level for university graduation purposes, you can obtain a certificate based on a formal diagnostic evaluation. It is a document accepted by many Mexican universities to fulfill the foreign language requirement.",
     "tituloBtn": "Request on WhatsApp"
+  },
+  "uneteAlEquipo": {
+    "badge": "Work with us",
+    "title1": "Join our",
+    "title2": "language team",
+    "subtitle": "Explore our teacher vacancies",
+    "description": "At ICA Languages, we value passion for teaching and continuous growth. Join a vibrant community dedicated to connecting the world through languages.",
+    "presencial": "In-person",
+    "enLinea": "Online",
+    "ubicacionPresencial": "412 Juarez Ave, Centro, 90300 Cdad. de Apizaco, Tlax.",
+    "horarioLabel": "Schedule:",
+    "horarioVal": "9:00 a.m. to 2:00 p.m.",
+    "sendCV": "Send your CV",
+    "v1Title": "Language teacher",
+    "v1Subtitle": "(adults)",
+    "v1Extra": "In-person work on site.",
+    "v2Title": "Language teacher",
+    "v2Subtitle": "(kids)",
+    "v2Extra": "In-person work on site.",
+    "v3Title": "Online teacher",
+    "v3Subtitle": "(remote)",
+    "v3Extra": "Connection via Meet, etc."
   }
 }

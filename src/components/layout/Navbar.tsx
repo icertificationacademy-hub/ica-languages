@@ -13,10 +13,52 @@ const ORANGE = "#FD7C46";
 const ORANGE_DARK = "#e06535";
 
 const languages = [
-  { code: "es", label: "ES", fullLabel: "Español", flag: "🇲🇽" },
-  { code: "en", label: "EN", fullLabel: "English", flag: "🇺🇸" },
-  { code: "fr", label: "FR", fullLabel: "Français", flag: "🇫🇷" },
+  { code: "es", label: "ES", fullLabel: "Español" },
+  { code: "en", label: "EN", fullLabel: "English" },
+  { code: "fr", label: "FR", fullLabel: "Français" },
 ];
+
+function FlagIcon({ code }: { code: string }) {
+  if (code === "es") {
+    return (
+      <svg className="w-5 h-5 rounded-md border border-white/20 shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="10" height="20" fill="#006847" />
+        <rect x="10" width="10" height="20" fill="#FFFFFF" />
+        <rect x="20" width="10" height="20" fill="#C8102E" />
+        <circle cx="15" cy="10" r="1.5" fill="#C5A059" />
+      </svg>
+    );
+  }
+  if (code === "en") {
+    return (
+      <svg className="w-5 h-5 rounded-md border border-white/20 shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="30" height="20" fill="#B22234" />
+        <path d="M0,1.5 H30 M0,4.5 H30 M0,7.5 H30 M0,10.5 H30 M0,13.5 H30 M0,16.5 H30" stroke="#FFFFFF" strokeWidth="1.5" />
+        <rect width="12" height="11" fill="#3C3B6E" />
+        <circle cx="2" cy="2" r="0.4" fill="#FFFFFF" />
+        <circle cx="6" cy="2" r="0.4" fill="#FFFFFF" />
+        <circle cx="10" cy="2" r="0.4" fill="#FFFFFF" />
+        <circle cx="4" cy="4" r="0.4" fill="#FFFFFF" />
+        <circle cx="8" cy="4" r="0.4" fill="#FFFFFF" />
+        <circle cx="2" cy="6" r="0.4" fill="#FFFFFF" />
+        <circle cx="6" cy="6" r="0.4" fill="#FFFFFF" />
+        <circle cx="10" cy="6" r="0.4" fill="#FFFFFF" />
+        <circle cx="4" cy="8" r="0.4" fill="#FFFFFF" />
+        <circle cx="8" cy="8" r="0.4" fill="#FFFFFF" />
+      </svg>
+    );
+  }
+  if (code === "fr") {
+    return (
+      <svg className="w-5 h-5 rounded-md border border-white/20 shadow-sm shrink-0" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="10" height="20" fill="#0055A5" />
+        <rect x="10" width="10" height="20" fill="#FFFFFF" />
+        <rect x="20" width="10" height="20" fill="#EF4135" />
+      </svg>
+    );
+  }
+  return null;
+}
 
 export default function Navbar() {
   const t = useTranslations("nav");
@@ -188,7 +230,7 @@ export default function Navbar() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-white hover:text-white/80 transition-colors"
               >
-                <span className="text-base">{activeLang.flag}</span>
+                <FlagIcon code={activeLang.code} />
                 <span>{activeLang.label}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -217,7 +259,7 @@ export default function Navbar() {
                     } last:border-0`}
                     style={{ borderColor: "rgba(255,255,255,0.1)" }}
                   >
-                    <span className="text-base">{lang.flag}</span>
+                    <FlagIcon code={lang.code} />
                     <span>{lang.fullLabel}</span>
                   </button>
                 ))}
@@ -304,7 +346,7 @@ export default function Navbar() {
                       : "text-white/60 hover:text-white"
                   }`}
                 >
-                  <span>{lang.flag}</span>
+                  <FlagIcon code={lang.code} />
                   <span>{lang.label}</span>
                 </button>
               ))}

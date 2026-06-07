@@ -301,5 +301,27 @@
     "tituloTitle": "Constancia de nivel para titulación",
     "tituloDesc": "Si necesitas comprobar tu nivel de inglés para fines de titulación universitaria, puedes obtener una constancia basada en una evaluación diagnóstica formal. Es un documento aceptado por muchas universidades mexicanas para cumplir con el requisito de idioma extranjero.",
     "tituloBtn": "Solicitar por WhatsApp"
+  },
+  "uneteAlEquipo": {
+    "badge": "Trabaja con nosotros",
+    "title1": "Únete a nuestro",
+    "title2": "equipo de idiomas",
+    "subtitle": "Explora nuestras vacantes para profesores",
+    "description": "En ICA Languages, valoramos la pasión por la enseñanza y el crecimiento continuo. Únete a una comunidad vibrante dedicada a conectar el mundo a través de los idiomas.",
+    "presencial": "Presencial",
+    "enLinea": "En línea",
+    "ubicacionPresencial": "Av Juárez 412, Centro, 90300 Cdad. de Apizaco, Tlax.",
+    "horarioLabel": "Horario:",
+    "horarioVal": "9:00 a.m a 2:00 pm",
+    "sendCV": "Envía tu CV",
+    "v1Title": "Profesor de idiomas",
+    "v1Subtitle": "(adultos)",
+    "v1Extra": "Trabajo presencial en instalaciones.",
+    "v2Title": "Profesor de idiomas",
+    "v2Subtitle": "(niños)",
+    "v2Extra": "Trabajo presencial en instalaciones.",
+    "v3Title": "Profesor en línea",
+    "v3Subtitle": "(remoto)",
+    "v3Extra": "Conexión en Meet, etc."
   }
 }

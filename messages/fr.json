@@ -301,5 +301,27 @@
     "tituloTitle": "Attestation de niveau pour l'obtention du diplôme",
     "tituloDesc": "Si vous avez besoin de prouver votre niveau d'anglais pour l'obtention d'un diplôme universitaire, vous pouvez obtenir une attestation basée sur une évaluation diagnostique formelle. C'est un document accepté par de nombreuses universités mexicaines pour satisfaire à l'exigence de langue étrangère.",
     "tituloBtn": "Demander sur WhatsApp"
+  },
+  "uneteAlEquipo": {
+    "badge": "Travaillez avec nous",
+    "title1": "Rejoignez notre",
+    "title2": "équipe linguistique",
+    "subtitle": "Découvrez nos postes d'enseignants vacants",
+    "description": "Chez ICA Languages, nous valorisons la passion pour l'enseignement et la croissance continue. Rejoignez une communauté dynamique dédiée à connecter le monde à travers les langues.",
+    "presencial": "En présentiel",
+    "enLinea": "En ligne",
+    "ubicacionPresencial": "412 Av Juárez, Centro, 90300 Cdad. de Apizaco, Tlax.",
+    "horarioLabel": "Horaire :",
+    "horarioVal": "9h00 à 14h00",
+    "sendCV": "Envoyez votre CV",
+    "v1Title": "Professeur de langues",
+    "v1Subtitle": "(adultes)",
+    "v1Extra": "Travail en présentiel dans nos locaux.",
+    "v2Title": "Professeur de langues",
+    "v2Subtitle": "(enfants)",
+    "v2Extra": "Travail en présentiel dans nos locaux.",
+    "v3Title": "Enseignant en ligne",
+    "v3Subtitle": "(à distance)",
+    "v3Extra": "Connexion via Meet, etc."
   }
 }
