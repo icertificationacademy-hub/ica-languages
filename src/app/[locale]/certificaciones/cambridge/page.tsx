@@ -157,7 +157,7 @@ export default async function CambridgePage({
           <div className="text-center mb-6">
             <span className="inline-block bg-indigo-100 text-indigo-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">{t("certsLabel")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3" style={{ fontFamily: "var(--font-plus-jakarta)" }}>{t("certsTitle")}</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto text-base">{t("certsSubtitle")}</p>
+            <p className="text-slate-500 max-w-3xl mx-auto text-base">{t("certsSubtitle")}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {certifications.map((cert) => (

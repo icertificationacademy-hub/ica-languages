@@ -9,14 +9,14 @@ export default async function DemoClassSection() {
     <section className="py-4 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="relative rounded-3xl overflow-hidden min-h-[420px] flex items-center bg-cover bg-center"
+          className="relative rounded-3xl overflow-hidden min-h-[480px] flex items-center bg-cover bg-center"
           style={{ backgroundImage: "url('/images/clasemuestra.jpeg')", backgroundPosition: "center 20%" }}
         >
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/55 rounded-3xl" />
 
           {/* Content */}
-          <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-10 sm:py-16 max-w-2xl">
+          <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-12 sm:py-20 max-w-2xl">
             <h2
               className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight"
               style={{ fontFamily: "var(--font-plus-jakarta)" }}

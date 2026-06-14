@@ -89,13 +89,18 @@ export default async function Footer() {
               {t("idiomas")}
             </h3>
             <ul className="space-y-2.5">
-              {courses.map((course) => (
-                <li key={course.id}>
+              {[
+                { key: "ingles",       href: "/cursos/ingles" },
+                { key: "inglesNinos",  href: "/cursos/ingles-ninos" },
+                { key: "frances",      href: "/cursos/frances" },
+                { key: "inglesEmpresa",href: "/cursos/ingles-empresa" },
+              ].map((item) => (
+                <li key={item.key}>
                   <Link
-                    href={course.href as "/cursos/ingles" | "/cursos/ingles-ninos" | "/cursos/frances" | "/cursos/ingles-empresa"}
+                    href={item.href as "/cursos/ingles" | "/cursos/ingles-ninos" | "/cursos/frances" | "/cursos/ingles-empresa"}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
-                    {course.title}
+                    {tNav(item.key as Parameters<typeof tNav>[0])}
                   </Link>
                 </li>
               ))}
@@ -108,13 +113,17 @@ export default async function Footer() {
               {t("certificaciones")}
             </h3>
             <ul className="space-y-2.5">
-              {certifications.map((cert) => (
-                <li key={cert.id}>
+              {[
+                { key: "cambridge",       href: "/certificaciones/cambridge" },
+                { key: "alianzaFrancesa", href: "/certificaciones/alianza-francesa" },
+                { key: "constanciaNivel", href: "/certificaciones/constancia-de-nivel" },
+              ].map((item) => (
+                <li key={item.key}>
                   <Link
-                    href={cert.href as "/certificaciones/cambridge" | "/certificaciones/alianza-francesa" | "/certificaciones/constancia-de-nivel"}
+                    href={item.href as "/certificaciones/cambridge" | "/certificaciones/alianza-francesa" | "/certificaciones/constancia-de-nivel"}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
-                    {cert.title}
+                    {tNav(item.key as Parameters<typeof tNav>[0])}
                   </Link>
                 </li>
               ))}
