@@ -17,11 +17,6 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "ICA Languages",
   description: "Aprende inglés y francés con confianza en ICA Languages, Apizaco Tlaxcala.",
-  icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: "/icon.svg",
-    shortcut: "/icon.svg",
-  },
 };
 
 export default function RootLayout({
@@ -35,6 +30,11 @@ export default function RootLayout({
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+      </head>
       <body className="min-h-full flex flex-col bg-white text-slate-900" suppressHydrationWarning>
         {children}
       </body>
