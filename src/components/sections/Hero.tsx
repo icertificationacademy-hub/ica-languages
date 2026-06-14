@@ -7,8 +7,7 @@ export default async function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ paddingTop: "100px" }}
+      className="relative min-h-screen flex flex-col overflow-hidden pt-[70px] sm:pt-[90px] lg:pt-[100px]"
     >
       {/* ── BACKGROUND IMAGE ── */}
       <div

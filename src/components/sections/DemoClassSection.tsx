@@ -16,9 +16,9 @@ export default async function DemoClassSection() {
           <div className="absolute inset-0 bg-black/55 rounded-3xl" />
 
           {/* Content */}
-          <div className="relative z-10 px-8 sm:px-14 py-16 max-w-2xl">
+          <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-10 sm:py-16 max-w-2xl">
             <h2
-              className="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight"
+              className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight"
               style={{ fontFamily: "var(--font-plus-jakarta)" }}
             >
               {t("demoTitle")}

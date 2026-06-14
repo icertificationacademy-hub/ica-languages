@@ -41,8 +41,8 @@ function CircularProgress({
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="relative">
-        <svg width="220" height="220" viewBox="0 0 220 220">
+      <div className="relative w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] md:w-[220px] md:h-[220px]">
+        <svg width="100%" height="100%" viewBox="0 0 220 220">
           <circle cx="110" cy="110" r={radius} fill="none" stroke="#e5e7eb" strokeWidth="12" />
           <circle
             cx="110" cy="110" r={radius}
@@ -105,7 +105,7 @@ export default function StatsSection() {
           {t("statsTitle")}
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-16">
+        <div className="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-16">
           {statsData.map((stat) => (
             <CircularProgress
               key={stat.label}

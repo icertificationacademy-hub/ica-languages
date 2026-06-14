@@ -37,7 +37,7 @@ export default function CertificationsSection() {
 
           {/* ── CAROUSEL ── */}
           <div className="relative group flex flex-col items-center">
-            <div className="relative w-[420px] max-w-full h-[480px] rounded-2xl shadow-lg overflow-hidden bg-white">
+            <div className="relative w-full max-w-[420px] h-[300px] sm:h-[400px] md:h-[480px] rounded-2xl shadow-lg overflow-hidden bg-white">
               {certImages.map((img, i) => (
                 <div
                   key={img.src}

@@ -31,14 +31,10 @@ export default function PartnersSection() {
           {partners.map((p) => (
             <div
               key={p.name}
-              className={`relative rounded-2xl overflow-hidden shadow-md flex items-center justify-center transition-transform hover:scale-105 ${
+              className={`relative rounded-2xl overflow-hidden shadow-md flex items-center justify-center transition-transform hover:scale-105 w-[240px] h-[130px] sm:w-[280px] sm:h-[150px] md:w-[300px] md:h-[160px] ${
                 p.border ? "border border-slate-200" : ""
               }`}
-              style={{
-                backgroundColor: p.bg,
-                width: "300px",
-                height: "160px",
-              }}
+              style={{ backgroundColor: p.bg }}
             >
               <Image
                 src={p.logo}

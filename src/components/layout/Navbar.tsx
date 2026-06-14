@@ -126,7 +126,7 @@ export default function Navbar() {
       style={{ backgroundColor: TEAL }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[100px]">
+        <div className="flex items-center justify-between h-[70px] sm:h-[90px] lg:h-[100px]">
 
           {/* ── LOGO ── */}
           <Link href="/" className="shrink-0">
@@ -135,7 +135,7 @@ export default function Navbar() {
               alt="ICA Languages — Learn, grow, communicate"
               width={300}
               height={76}
-              className="h-[68px] w-auto object-contain"
+              className="h-[48px] sm:h-[60px] lg:h-[68px] w-auto object-contain"
               priority
             />
           </Link>
