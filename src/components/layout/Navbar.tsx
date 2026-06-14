@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { useTranslations, useLocale } from "next-intl";
-import { Link, useRouter, usePathname } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
 const TEAL = "#296570";
 const TEAL_DARK = "#1e4f58";
@@ -63,7 +63,6 @@ function FlagIcon({ code }: { code: string }) {
 export default function Navbar() {
   const t = useTranslations("nav");
   const locale = useLocale();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [langOpen, setLangOpen] = useState(false);
@@ -116,9 +115,8 @@ export default function Navbar() {
   }, []);
 
   function switchLocale(newLocale: string) {
-    router.replace(pathname, { locale: newLocale });
-    setLangOpen(false);
-    setIsOpen(false);
+    const newPath = `/${newLocale}${pathname === "/" ? "" : pathname}`;
+    window.location.href = newPath;
   }
 
   return (
