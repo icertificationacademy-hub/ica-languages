@@ -3,11 +3,18 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, Monitor, MapPin, Clock, Users, Calendar, Award, Handshake, Building2, Globe, UserCheck, Plane, Briefcase } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Inglés para Empresa | ICA Languages" };
 
-export default async function InglesEmpresaPage() {
+export default async function InglesEmpresaPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("cursoEmpresa");
 
   const whyUs = [

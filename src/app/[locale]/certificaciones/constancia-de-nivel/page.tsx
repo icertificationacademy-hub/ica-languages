@@ -3,11 +3,18 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, GraduationCap, Briefcase, FileText, Globe } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Constancia de Nivel | ICA Languages" };
 
-export default async function ConstanciaNivelPage() {
+export default async function ConstanciaPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("certConstancia");
 
   const usos = [

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, Globe, FileCheck, TrendingUp, Clock, Award } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Alianza Francesa – DELF y DALF | ICA Languages" };
 
@@ -19,7 +19,14 @@ const dalfLevels = [
   { code: "DALF C2", level: "C2", description: "El más alto reconocimiento en lengua francesa. Valida una competencia casi nativa, con comprensión completa de textos orales y escritos, y dominio absoluto del idioma en contextos especializados.", border: "border-fuchsia-200", accent: "bg-fuchsia-50", badge: "bg-fuchsia-100 text-fuchsia-700" },
 ];
 
-export default async function AlianzaFrancesaPage() {
+export default async function AlianzaFrancesaPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("certAlianza");
 
   const whyCertify = [

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Award, Calendar, Lightbulb, CheckCircle, ArrowRight, MessageCircle, Star, Handshake, Globe, Shield, School, MapPin, Target, Compass } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from "@/i18n/navigation";
 
 export const metadata: Metadata = {
@@ -22,7 +22,14 @@ const team = [
   { name: "Ms. Katerine", role: "Docente en Inglés", image: "/images/maestrakaterin.png" },
 ];
 
-export default async function NosotrosPage() {
+export default async function NosotrosPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("nosotros");
 
   const whyUs = [

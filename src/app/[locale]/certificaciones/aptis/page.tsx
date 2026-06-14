@@ -2,11 +2,18 @@ import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, CheckCircle, Clock, TrendingUp, DollarSign, Globe, Award, BookOpen, Zap } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Certificación APTIS | ICA Languages" };
 
-export default async function AptisPage() {
+export default async function AptisPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("certAptis");
 
   const reasons = [

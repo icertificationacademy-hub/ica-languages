@@ -3,11 +3,18 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, BookOpen, Mic, Users, Brain, Trophy, Star, GraduationCap, Smile } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Inglés para Niños | ICA Languages" };
 
-export default async function InglesNinosPage() {
+export default async function InglesNinosPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("cursoNinos");
 
   const features = [

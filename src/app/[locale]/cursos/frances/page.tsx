@@ -3,11 +3,18 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, Users, Monitor, MapPin, CheckCircle, Award, Globe } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Curso de Francés | ICA Languages" };
 
-export default async function FrancesPage() {
+export default async function FrancesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("cursoFrances");
   const features = [
     { icon: <Award className="w-5 h-5" />, label: t("f1") },

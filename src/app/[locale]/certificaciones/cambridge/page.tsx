@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MessageCircle, Plane, TrendingUp, Award, FileCheck, GraduationCap, Briefcase, Globe } from "lucide-react";
 import { siteConfig } from "@/data/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Certificaciones Cambridge | ICA Languages" };
 
@@ -16,7 +16,14 @@ const certifications = [
   { code: "IELTS", name: "Sistema Internacional de Evaluación del Idioma Inglés", level: "A2 – C2", description: "IELTS es uno de los exámenes más aceptados a nivel mundial para estudios, migración o trabajo. Mide comprensión auditiva, lectura, expresión escrita y oral. Existen dos versiones: Academic: para estudios universitarios o posgrados. General Training: para migración o propósitos laborales.", image: "/images/certificaciones.png", levelColor: "bg-amber-100 text-amber-700", border: "border-amber-200", accent: "bg-amber-50" },
 ];
 
-export default async function CambridgePage() {
+export default async function CambridgePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations("certCambridge");
 
   const whyCambridge = [
