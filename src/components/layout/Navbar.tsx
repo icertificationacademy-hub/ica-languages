@@ -90,6 +90,7 @@ export default function Navbar() {
       children: [
         { label: t("cambridge"), href: "/certificaciones/cambridge" },
         { label: t("alianzaFrancesa"), href: "/certificaciones/alianza-francesa" },
+        { label: t("aptis"), href: "/certificaciones/aptis" },
         { label: t("constanciaNivel"), href: "/certificaciones/constancia-de-nivel" },
       ],
     },
