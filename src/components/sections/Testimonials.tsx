@@ -4,46 +4,21 @@ import { useState, useEffect, useCallback } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const testimonialsData = [
-  {
-    name: "María Fernanda Gutiérrez",
-    text: "Me inscribí al curso de inglés y la verdad me está encantando. La maestra está muy bien preparada y explica superbién. ¡Excelente servicio!",
-    rating: 5,
-    avatar: "MF",
-    color: "bg-blue-500",
-  },
-  {
-    name: "José Antonio",
-    text: "Tomé un curso de preparación para certificación, aprendí bastante y obtuve un puntaje alto.",
-    rating: 5,
-    avatar: "JA",
-    color: "bg-amber-500",
-  },
-  {
-    name: "Luis Ángel Hernandez",
-    text: "Estoy en el curso de francés y enseñan muy bien. Recomiendo mucho la escuela.",
-    rating: 5,
-    avatar: "LH",
-    color: "bg-green-500",
-  },
-  {
-    name: "Estefany Aquino",
-    text: "Me metí al curso de preparación para TOEFL porque lo necesitaba para la universidad y me gustó tanto la forma en que enseñaban que seguí en el curso de inglés regular.",
-    rating: 5,
-    avatar: "EA",
-    color: "bg-purple-500",
-  },
-  {
-    name: "Carlos Mendoza",
-    text: "Mi hijo lleva 8 meses y su progreso es increíble. Aprende jugando y siempre quiere ir a sus clases.",
-    rating: 5,
-    avatar: "CM",
-    color: "bg-pink-500",
-  },
+const testimonialsBase = [
+  { name: "María Fernanda Gutiérrez", tKey: "t1", avatar: "MF", color: "bg-blue-500" },
+  { name: "José Antonio",             tKey: "t2", avatar: "JA", color: "bg-amber-500" },
+  { name: "Luis Ángel Hernandez",     tKey: "t3", avatar: "LH", color: "bg-green-500" },
+  { name: "Estefany Aquino",          tKey: "t4", avatar: "EA", color: "bg-purple-500" },
+  { name: "Carlos Mendoza",           tKey: "t5", avatar: "CM", color: "bg-pink-500" },
 ];
 
 export default function Testimonials() {
   const t = useTranslations("home");
+
+  const testimonialsData = testimonialsBase.map((item) => ({
+    ...item,
+    text: t(item.tKey as Parameters<typeof t>[0]),
+  }));
   const [current, setCurrent] = useState(0);
   const [perPage, setPerPage] = useState(3);
 

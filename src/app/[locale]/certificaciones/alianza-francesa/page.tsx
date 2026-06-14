@@ -7,16 +7,16 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Alianza Francesa – DELF y DALF | ICA Languages" };
 
-const delfLevels = [
-  { code: "DELF A1", level: "A1", description: "La certificación DELF A1 evalúa la comprensión y expresión básica del idioma francés. El candidato debe poder presentarse, hacer preguntas sencillas y mantener una interacción breve sobre temas cotidianos.", border: "border-slate-200", accent: "bg-slate-50", badge: "bg-slate-100 text-slate-700" },
-  { code: "DELF A2", level: "A2", description: "Este nivel certifica la capacidad de comunicarse en situaciones simples y cotidianas como hacer compras, presentarse, hablar sobre su familia, gustos o entorno.", border: "border-blue-200", accent: "bg-blue-50", badge: "bg-blue-100 text-blue-700" },
-  { code: "DELF B1", level: "B1", description: "El examen B1 certifica que el alumno puede desenvolverse en viajes, redactar textos sencillos, expresar opiniones y comprender mensajes generales en situaciones del día a día.", border: "border-indigo-200", accent: "bg-indigo-50", badge: "bg-indigo-100 text-indigo-700" },
-  { code: "DELF B2", level: "B2", description: "Este nivel valida que el estudiante puede argumentar, defender opiniones, comprender textos complejos y participar activamente en discusiones. Es aceptado por universidades francesas y francófonas para el ingreso académico.", border: "border-violet-200", accent: "bg-violet-50", badge: "bg-violet-100 text-violet-700" },
+const delfBase = [
+  { code: "DELF A1", level: "A1", descKey: "delfA1Desc", border: "border-slate-200",  accent: "bg-slate-50",  badge: "bg-slate-100 text-slate-700" },
+  { code: "DELF A2", level: "A2", descKey: "delfA2Desc", border: "border-blue-200",   accent: "bg-blue-50",   badge: "bg-blue-100 text-blue-700" },
+  { code: "DELF B1", level: "B1", descKey: "delfB1Desc", border: "border-indigo-200", accent: "bg-indigo-50", badge: "bg-indigo-100 text-indigo-700" },
+  { code: "DELF B2", level: "B2", descKey: "delfB2Desc", border: "border-violet-200", accent: "bg-violet-50", badge: "bg-violet-100 text-violet-700" },
 ];
 
-const dalfLevels = [
-  { code: "DALF C1", level: "C1", description: "Certificación avanzada que evalúa fluidez, precisión, comprensión profunda de textos y capacidad de expresarse de forma estructurada en contextos académicos o profesionales.", border: "border-purple-200", accent: "bg-purple-50", badge: "bg-purple-100 text-purple-700" },
-  { code: "DALF C2", level: "C2", description: "El más alto reconocimiento en lengua francesa. Valida una competencia casi nativa, con comprensión completa de textos orales y escritos, y dominio absoluto del idioma en contextos especializados.", border: "border-fuchsia-200", accent: "bg-fuchsia-50", badge: "bg-fuchsia-100 text-fuchsia-700" },
+const dalfBase = [
+  { code: "DALF C1", level: "C1", descKey: "dalfC1Desc", border: "border-purple-200",  accent: "bg-purple-50",  badge: "bg-purple-100 text-purple-700" },
+  { code: "DALF C2", level: "C2", descKey: "dalfC2Desc", border: "border-fuchsia-200", accent: "bg-fuchsia-50", badge: "bg-fuchsia-100 text-fuchsia-700" },
 ];
 
 export default async function AlianzaFrancesaPage({
@@ -28,6 +28,9 @@ export default async function AlianzaFrancesaPage({
   setRequestLocale(locale);
 
   const t = await getTranslations("certAlianza");
+
+  const delfLevels = delfBase.map((d) => ({ ...d, description: t(d.descKey as Parameters<typeof t>[0]) }));
+  const dalfLevels = dalfBase.map((d) => ({ ...d, description: t(d.descKey as Parameters<typeof t>[0]) }));
 
   const whyCertify = [
     { icon: <Globe className="w-6 h-6" />, label: t("why1"), color: "text-purple-600", bg: "bg-purple-100" },
@@ -120,7 +123,7 @@ export default async function AlianzaFrancesaPage({
               <div key={d.code} className={`rounded-3xl border-2 ${d.border} ${d.accent} p-7`}>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-xl font-extrabold text-slate-800">{d.code}</span>
-                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${d.badge}`}>Nivel {d.level}</span>
+                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${d.badge}`}>{t("levelPrefix")} {d.level}</span>
                 </div>
                 <p className="text-slate-600 text-sm leading-relaxed">{d.description}</p>
               </div>
@@ -141,7 +144,7 @@ export default async function AlianzaFrancesaPage({
               <div key={d.code} className={`rounded-3xl border-2 ${d.border} bg-white p-8 flex flex-col gap-4 shadow-sm`}>
                 <div className="flex items-center gap-3">
                   <span className="text-xl font-extrabold text-slate-800">{d.code}</span>
-                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${d.badge}`}>Nivel {d.level}</span>
+                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${d.badge}`}>{t("levelPrefix")} {d.level}</span>
                 </div>
                 <p className="text-slate-600 text-sm leading-relaxed">{d.description}</p>
               </div>

@@ -63,6 +63,11 @@
     "testimonialsTitle": "Lo que dicen nuestros estudiantes",
     "testimonialsSubtitle": "Historias reales de personas que transformaron su vida aprendiendo un idioma.",
     "alumno": "Alumno",
+    "t1": "Me inscribí al curso de inglés y la verdad me está encantando. La maestra está muy bien preparada y explica superbién. ¡Excelente servicio!",
+    "t2": "Tomé un curso de preparación para certificación, aprendí bastante y obtuve un puntaje alto.",
+    "t3": "Estoy en el curso de francés y enseñan muy bien. Recomiendo mucho la escuela.",
+    "t4": "Me metí al curso de preparación para TOEFL porque lo necesitaba para la universidad y me gustó tanto la forma en que enseñaban que seguí en el curso de inglés regular.",
+    "t5": "Mi hijo lleva 8 meses y su progreso es increíble. Aprende jugando y siempre quiere ir a sus clases."
     "aptisTitle": "¿Por qué elegir APTIS hoy mismo?",
     "aptisSubtitle": "La certificación de inglés del British Council: flexible, ágil y con reconocimiento internacional.",
     "aptisBtn": "Ver más sobre APTIS",
@@ -113,7 +118,11 @@
     "equipoTitle": "Nuestro equipo",
     "ctaJoin": "¿Quieres ser parte de nuestro equipo?",
     "ctaJoinSub": "Buscamos maestros apasionados por los idiomas y la educación.",
-    "ctaJoinBtn": "Únete al equipo"
+    "ctaJoinBtn": "Únete al equipo",
+    "roleEnglish": "Docente en Inglés",
+    "roleEnglishJapFr": "Docente en Inglés, Japonés, Francés",
+    "roleFrIt": "Docente en Francés, Italiano",
+    "roleEnglishIt": "Docente en Inglés, Italiano"
   },
   "cursoIngles": {
     "badge": "Curso de Inglés",
@@ -267,7 +276,24 @@
     "certsLabel": "Exámenes disponibles",
     "certsTitle": "Certificaciones de Cambridge disponibles en ICA Languages",
     "certsSubtitle": "En ICA Languages te ofrecemos y preparamos para obtener una certificación oficial a nivel internacional. Conoce los exámenes disponibles y elige el ideal para tu perfil académico o profesional.",
-    "moreInfo": "Más información"
+    "moreInfo": "Más información",
+    "levelPrefix": "Nivel",
+    "certsAvailable": "Certificaciones disponibles",
+    "recognizedIn": "Reconocida en",
+    "countries130": "+130 países",
+    "officialPrep": "Preparación oficial",
+    "ketName": "Prueba de inglés clave",
+    "ketDesc": "La certificación KET es un examen elemental que evalúa la capacidad para comprender y usar frases cotidianas, así como expresarse en situaciones simples. Es ideal para quienes están iniciando su camino en el idioma.",
+    "petName": "Prueba preliminar de inglés",
+    "petDesc": "Este examen mide el uso del inglés en contextos laborales, escolares y sociales comunes. Demuestra que el estudiante puede comunicarse en situaciones prácticas y reales, como escribir correos sencillos o sostener conversaciones básicas.",
+    "fceName": "Primer Certificado en Inglés",
+    "fceDesc": "La certificación FCE avala que el alumno puede usar el inglés de forma efectiva, tanto en ambientes laborales como académicos. Incluye comprensión de textos complejos, redacción de informes o ensayos, y participación en conversaciones detalladas.",
+    "caeName": "Certificado de Inglés Avanzado",
+    "caeDesc": "Un nivel avanzado que demuestra fluidez y precisión en el idioma. Ideal para estudios universitarios, trabajo profesional en el extranjero o postulación a becas e intercambios. Reconocido por instituciones académicas de alto prestigio.",
+    "tktName": "Prueba de conocimientos docentes",
+    "tktDesc": "TKT es una certificación dirigida a docentes de inglés. Evalúa el conocimiento sobre enseñanza del idioma. Ideal para quienes buscan iniciar o fortalecer su carrera como maestros de inglés.",
+    "ieltsName": "Sistema Internacional de Evaluación del Idioma Inglés",
+    "ieltsDesc": "IELTS es uno de los exámenes más aceptados a nivel mundial para estudios, migración o trabajo. Mide comprensión auditiva, lectura, expresión escrita y oral. Existen dos versiones: Academic: para estudios universitarios o posgrados. General Training: para migración o propósitos laborales."
   },
   "certAlianza": {
     "badge": "Certificaciones Oficiales de Francés",
@@ -291,7 +317,14 @@
     "dalfLabel": "Niveles C1 · C2",
     "dalfTitle": "DALF – Diplôme Approfondi de Langue Française",
     "dalfDesc": "El DALF acredita un dominio avanzado del idioma francés, tanto escrito como oral. Es ideal para estudios superiores, migración o trabajo profesional en países francófonos.",
-    "ctaBtn": "Consultar por WhatsApp"
+    "ctaBtn": "Consultar por WhatsApp",
+    "levelPrefix": "Nivel",
+    "delfA1Desc": "La certificación DELF A1 evalúa la comprensión y expresión básica del idioma francés. El candidato debe poder presentarse, hacer preguntas sencillas y mantener una interacción breve sobre temas cotidianos.",
+    "delfA2Desc": "Este nivel certifica la capacidad de comunicarse en situaciones simples y cotidianas como hacer compras, presentarse, hablar sobre su familia, gustos o entorno.",
+    "delfB1Desc": "El examen B1 certifica que el alumno puede desenvolverse en viajes, redactar textos sencillos, expresar opiniones y comprender mensajes generales en situaciones del día a día.",
+    "delfB2Desc": "Este nivel valida que el estudiante puede argumentar, defender opiniones, comprender textos complejos y participar activamente en discusiones. Es aceptado por universidades francesas y francófonas para el ingreso académico.",
+    "dalfC1Desc": "Certificación avanzada que evalúa fluidez, precisión, comprensión profunda de textos y capacidad de expresarse de forma estructurada en contextos académicos o profesionales.",
+    "dalfC2Desc": "El más alto reconocimiento en lengua francesa. Valida una competencia casi nativa, con comprensión completa de textos orales y escritos, y dominio absoluto del idioma en contextos especializados."
   },
   "certConstancia": {
     "badge": "Documentos Oficiales",
@@ -344,7 +377,17 @@
     "aboutText": "APTIS evalúa las cuatro habilidades lingüísticas fundamentales: gramática y vocabulario, comprensión auditiva, lectura y expresión escrita. Puedes elegir el módulo oral para también acreditar tu nivel de habla. Los resultados se emiten en escala A1 a C2 del Marco Europeo.",
     "ctaTitle": "¿Listo para certificarte con APTIS?",
     "ctaSubtitle": "Contáctanos y recibe orientación gratuita sobre el proceso de certificación.",
-    "ctaBtn": "Comenzar mi preparación"
+    "ctaBtn": "Comenzar mi preparación",
+    "levelsAvailable": "Niveles disponibles",
+    "levelA1": "Básico",
+    "levelA2": "Elemental",
+    "levelB1": "Intermedio",
+    "levelB2": "Intermedio Alto",
+    "levelC1": "Avanzado",
+    "levelC2": "Maestría",
+    "recognizedIn": "Reconocida en",
+    "countries100": "+100 países",
+    "officialPrep": "Preparación oficial"
   },
   "uneteAlEquipo": {
     "badge": "Trabaja con nosotros",

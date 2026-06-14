@@ -11,15 +11,15 @@ export const metadata: Metadata = {
     "Conoce a ICA Languages, el centro de idiomas en Apizaco, Tlaxcala. Misión, visión, valores y equipo docente.",
 };
 
-const team = [
-  { name: "Ms. Nadia", role: "Docente en Inglés", image: "/images/maestranadia.jpeg" },
-  { name: "Ms. Karla", role: "Docente en Inglés, Japonés, Francés", image: "/images/maestrakarla.png" },
-  { name: "Ms. Monserrat", role: "Docente en Inglés", image: "/images/maestramonserrat.png" },
-  { name: "Mr. Emmanuel", role: "Docente en Inglés, Italiano", image: "/images/msestroemmanuel.png" },
-  { name: "Ms. Yerith", role: "Docente en Francés, Italiano", image: "/images/maestraYerith.png" },
-  { name: "Mr. Raúl", role: "Docente en Inglés", image: "/images/maestroraul.png" },
-  { name: "Ms. Mariana", role: "Docente en Inglés", image: "/images/maestramariana.png" },
-  { name: "Ms. Katerine", role: "Docente en Inglés", image: "/images/maestrakaterin.png" },
+const teamBase = [
+  { name: "Ms. Nadia",     roleKey: "roleEnglish",       image: "/images/maestranadia.jpeg" },
+  { name: "Ms. Karla",     roleKey: "roleEnglishJapFr",  image: "/images/maestrakarla.png" },
+  { name: "Ms. Monserrat", roleKey: "roleEnglish",       image: "/images/maestramonserrat.png" },
+  { name: "Mr. Emmanuel",  roleKey: "roleEnglishIt",     image: "/images/msestroemmanuel.png" },
+  { name: "Ms. Yerith",    roleKey: "roleFrIt",          image: "/images/maestraYerith.png" },
+  { name: "Mr. Raúl",      roleKey: "roleEnglish",       image: "/images/maestroraul.png" },
+  { name: "Ms. Mariana",   roleKey: "roleEnglish",       image: "/images/maestramariana.png" },
+  { name: "Ms. Katerine",  roleKey: "roleEnglish",       image: "/images/maestrakaterin.png" },
 ];
 
 export default async function NosotrosPage({
@@ -31,6 +31,8 @@ export default async function NosotrosPage({
   setRequestLocale(locale);
 
   const t = await getTranslations("nosotros");
+
+  const team = teamBase.map((m) => ({ ...m, role: t(m.roleKey as Parameters<typeof t>[0]) }));
 
   const whyUs = [
     { icon: <Award className="w-6 h-6" />, label: t("whyQuality"), color: "text-teal-600", bg: "bg-teal-100" },

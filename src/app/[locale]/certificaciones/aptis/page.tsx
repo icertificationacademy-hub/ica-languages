@@ -41,12 +41,12 @@ export default async function AptisPage({
   ];
 
   const levels = [
-    { level: "A1", label: "Básico", color: "bg-slate-100 text-slate-700" },
-    { level: "A2", label: "Elemental", color: "bg-blue-100 text-blue-700" },
-    { level: "B1", label: "Intermedio", color: "bg-indigo-100 text-indigo-700" },
-    { level: "B2", label: "Intermedio Alto", color: "bg-violet-100 text-violet-700" },
-    { level: "C1", label: "Avanzado", color: "bg-purple-100 text-purple-700" },
-    { level: "C2", label: "Maestría", color: "bg-rose-100 text-rose-700" },
+    { level: "A1", label: t("levelA1"), color: "bg-slate-100 text-slate-700" },
+    { level: "A2", label: t("levelA2"), color: "bg-blue-100 text-blue-700" },
+    { level: "B1", label: t("levelB1"), color: "bg-indigo-100 text-indigo-700" },
+    { level: "B2", label: t("levelB2"), color: "bg-violet-100 text-violet-700" },
+    { level: "C1", label: t("levelC1"), color: "bg-purple-100 text-purple-700" },
+    { level: "C2", label: t("levelC2"), color: "bg-rose-100 text-rose-700" },
   ];
 
   const benefits = [
@@ -118,7 +118,7 @@ export default async function AptisPage({
                     </div>
                   </div>
                   <div className="px-6 py-5">
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">Niveles disponibles</p>
+                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">{t("levelsAvailable")}</p>
                     <div className="grid grid-cols-3 gap-2 mb-4">
                       {levels.map((l) => (
                         <div key={l.level} className={`rounded-xl p-2.5 text-center ${l.color}`}>
@@ -132,13 +132,13 @@ export default async function AptisPage({
                         <Globe className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="text-xs text-slate-500">Reconocida en</p>
-                        <p className="text-sm font-bold text-slate-800">+100 países</p>
+                        <p className="text-xs text-slate-500">{t("recognizedIn")}</p>
+                        <p className="text-sm font-bold text-slate-800">{t("countries100")}</p>
                       </div>
                     </div>
                   </div>
                   <div className="bg-slate-50 px-6 py-3 flex items-center justify-between border-t border-slate-100">
-                    <p className="text-xs text-slate-400 font-medium">Preparación oficial</p>
+                    <p className="text-xs text-slate-400 font-medium">{t("officialPrep")}</p>
                     <span className="text-xs font-bold text-red-700">ICA Languages</span>
                   </div>
                 </div>

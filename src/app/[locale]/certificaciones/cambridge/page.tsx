@@ -7,13 +7,13 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = { title: "Certificaciones Cambridge | ICA Languages" };
 
-const certifications = [
-  { code: "KET", name: "Prueba de inglés clave", level: "A2", description: "La certificación KET es un examen elemental que evalúa la capacidad para comprender y usar frases cotidianas, así como expresarse en situaciones simples. Es ideal para quienes están iniciando su camino en el idioma.", image: "/images/certifi2.png", levelColor: "bg-slate-100 text-slate-600", border: "border-slate-200", accent: "bg-slate-50" },
-  { code: "PET", name: "Prueba preliminar de inglés", level: "B1", description: "Este examen mide el uso del inglés en contextos laborales, escolares y sociales comunes. Demuestra que el estudiante puede comunicarse en situaciones prácticas y reales, como escribir correos sencillos o sostener conversaciones básicas.", image: "/images/certifi3.png", levelColor: "bg-blue-100 text-blue-700", border: "border-blue-200", accent: "bg-blue-50" },
-  { code: "FCE", name: "Primer Certificado en Inglés", level: "B2", description: "La certificación FCE avala que el alumno puede usar el inglés de forma efectiva, tanto en ambientes laborales como académicos. Incluye comprensión de textos complejos, redacción de informes o ensayos, y participación en conversaciones detalladas.", image: "/images/certifi4.png", levelColor: "bg-indigo-100 text-indigo-700", border: "border-indigo-200", accent: "bg-indigo-50" },
-  { code: "CAE", name: "Certificado de Inglés Avanzado", level: "C1", description: "Un nivel avanzado que demuestra fluidez y precisión en el idioma. Ideal para estudios universitarios, trabajo profesional en el extranjero o postulación a becas e intercambios. Reconocido por instituciones académicas de alto prestigio.", image: "/images/certifi5.png", levelColor: "bg-purple-100 text-purple-700", border: "border-purple-200", accent: "bg-purple-50" },
-  { code: "TKT", name: "Prueba de conocimientos docentes", level: "Docentes", description: "TKT es una certificación dirigida a docentes de inglés. Evalúa el conocimiento sobre enseñanza del idioma. Ideal para quienes buscan iniciar o fortalecer su carrera como maestros de inglés.", image: "/images/certifi1.png", levelColor: "bg-emerald-100 text-emerald-700", border: "border-emerald-200", accent: "bg-emerald-50" },
-  { code: "IELTS", name: "Sistema Internacional de Evaluación del Idioma Inglés", level: "A2 – C2", description: "IELTS es uno de los exámenes más aceptados a nivel mundial para estudios, migración o trabajo. Mide comprensión auditiva, lectura, expresión escrita y oral. Existen dos versiones: Academic: para estudios universitarios o posgrados. General Training: para migración o propósitos laborales.", image: "/images/certificaciones.png", levelColor: "bg-amber-100 text-amber-700", border: "border-amber-200", accent: "bg-amber-50" },
+const certificationsBase = [
+  { code: "KET",   nameKey: "ketName",   level: "A2",      descKey: "ketDesc",   image: "/images/certifi2.png",      levelColor: "bg-slate-100 text-slate-600",  border: "border-slate-200",  accent: "bg-slate-50" },
+  { code: "PET",   nameKey: "petName",   level: "B1",      descKey: "petDesc",   image: "/images/certifi3.png",      levelColor: "bg-blue-100 text-blue-700",    border: "border-blue-200",   accent: "bg-blue-50" },
+  { code: "FCE",   nameKey: "fceName",   level: "B2",      descKey: "fceDesc",   image: "/images/certifi4.png",      levelColor: "bg-indigo-100 text-indigo-700",border: "border-indigo-200", accent: "bg-indigo-50" },
+  { code: "CAE",   nameKey: "caeName",   level: "C1",      descKey: "caeDesc",   image: "/images/certifi5.png",      levelColor: "bg-purple-100 text-purple-700",border: "border-purple-200", accent: "bg-purple-50" },
+  { code: "TKT",   nameKey: "tktName",   level: "Doc.",    descKey: "tktDesc",   image: "/images/certifi1.png",      levelColor: "bg-emerald-100 text-emerald-700",border:"border-emerald-200",accent: "bg-emerald-50" },
+  { code: "IELTS", nameKey: "ieltsName", level: "A2 – C2", descKey: "ieltsDesc", image: "/images/certificaciones.png",levelColor: "bg-amber-100 text-amber-700",border: "border-amber-200",  accent: "bg-amber-50" },
 ];
 
 export default async function CambridgePage({
@@ -25,6 +25,12 @@ export default async function CambridgePage({
   setRequestLocale(locale);
 
   const t = await getTranslations("certCambridge");
+
+  const certifications = certificationsBase.map((c) => ({
+    ...c,
+    name: t(c.nameKey as Parameters<typeof t>[0]),
+    description: t(c.descKey as Parameters<typeof t>[0]),
+  }));
 
   const whyCambridge = [
     { icon: <Plane className="w-6 h-6" />, label: t("why1"), color: "text-sky-600", bg: "bg-sky-100" },
@@ -85,7 +91,7 @@ export default async function CambridgePage({
 
                   {/* Niveles */}
                   <div className="px-6 py-5">
-                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">Certificaciones disponibles</p>
+                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">{t("certsAvailable")}</p>
                     <div className="grid grid-cols-3 gap-2 mb-4">
                       {[
                         { code: "KET", level: "A2", color: "bg-slate-100 text-slate-700" },
@@ -108,15 +114,15 @@ export default async function CambridgePage({
                         <Globe className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="text-xs text-slate-500">Reconocida en</p>
-                        <p className="text-sm font-bold text-slate-800">+130 países</p>
+                        <p className="text-xs text-slate-500">{t("recognizedIn")}</p>
+                        <p className="text-sm font-bold text-slate-800">{t("countries130")}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Footer ICA */}
                   <div className="bg-slate-50 px-6 py-3 flex items-center justify-between border-t border-slate-100">
-                    <p className="text-xs text-slate-400 font-medium">Preparación oficial</p>
+                    <p className="text-xs text-slate-400 font-medium">{t("officialPrep")}</p>
                     <Image src="/images/logo.png" alt="ICA Languages" width={80} height={20} className="h-5 w-auto object-contain opacity-60" />
                   </div>
                 </div>
@@ -151,7 +157,7 @@ export default async function CambridgePage({
           <div className="text-center mb-6">
             <span className="inline-block bg-indigo-100 text-indigo-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">{t("certsLabel")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3" style={{ fontFamily: "var(--font-plus-jakarta)" }}>{t("certsTitle")}</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto text-sm">{t("certsSubtitle")}</p>
+            <p className="text-slate-500 max-w-2xl mx-auto text-base">{t("certsSubtitle")}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {certifications.map((cert) => (
@@ -172,7 +178,7 @@ export default async function CambridgePage({
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-lg font-extrabold text-slate-800">{cert.code}</span>
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${cert.levelColor}`}>Nivel {cert.level}</span>
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${cert.levelColor}`}>{t("levelPrefix")} {cert.level}</span>
                   </div>
                   <h3 className="text-base font-bold text-slate-900 mb-3">{cert.name}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed flex-1">{cert.description}</p>

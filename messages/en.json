@@ -63,6 +63,11 @@
     "testimonialsTitle": "What our students say",
     "testimonialsSubtitle": "Real stories of people who transformed their lives by learning a language.",
     "alumno": "Student",
+    "t1": "I signed up for the English course and I'm really enjoying it. The teacher is very well prepared and explains everything superbly. Excellent service!",
+    "t2": "I took a certification preparation course, learned a lot and got a high score.",
+    "t3": "I'm in the French course and they teach very well. I highly recommend the school.",
+    "t4": "I joined the TOEFL prep course because I needed it for university and I liked their teaching method so much that I continued with the regular English course.",
+    "t5": "My son has been here for 8 months and his progress is incredible. He learns through play and always wants to go to class."
     "aptisTitle": "Why choose APTIS today?",
     "aptisSubtitle": "The British Council English certification: flexible, fast, and internationally recognized.",
     "aptisBtn": "Learn more about APTIS",
@@ -113,7 +118,11 @@
     "equipoTitle": "Our team",
     "ctaJoin": "Want to be part of our team?",
     "ctaJoinSub": "We are looking for teachers passionate about languages and education.",
-    "ctaJoinBtn": "Join the team"
+    "ctaJoinBtn": "Join the team",
+    "roleEnglish": "English Teacher",
+    "roleEnglishJapFr": "English, Japanese & French Teacher",
+    "roleFrIt": "French & Italian Teacher",
+    "roleEnglishIt": "English & Italian Teacher"
   },
   "cursoIngles": {
     "badge": "English Course",
@@ -267,7 +276,24 @@
     "certsLabel": "Available exams",
     "certsTitle": "Cambridge Certifications available at ICA Languages",
     "certsSubtitle": "At ICA Languages we offer and prepare you to obtain an official international certification. Learn about the available exams and choose the one ideal for your academic or professional profile.",
-    "moreInfo": "More information"
+    "moreInfo": "More information",
+    "levelPrefix": "Level",
+    "certsAvailable": "Available certifications",
+    "recognizedIn": "Recognized in",
+    "countries130": "+130 countries",
+    "officialPrep": "Official preparation",
+    "ketName": "Key English Test",
+    "ketDesc": "The KET certification is an elementary exam that assesses the ability to understand and use everyday phrases, as well as express oneself in simple situations. It is ideal for those starting their language journey.",
+    "petName": "Preliminary English Test",
+    "petDesc": "This exam measures the use of English in common work, school and social contexts. It demonstrates that the student can communicate in practical and real situations, such as writing simple emails or holding basic conversations.",
+    "fceName": "First Certificate in English",
+    "fceDesc": "The FCE certification certifies that the student can use English effectively in both professional and academic environments. It includes comprehension of complex texts, writing reports or essays, and participation in detailed conversations.",
+    "caeName": "Certificate in Advanced English",
+    "caeDesc": "An advanced level demonstrating fluency and precision in the language. Ideal for university studies, professional work abroad, or applying for scholarships and exchanges. Recognized by prestigious academic institutions.",
+    "tktName": "Teaching Knowledge Test",
+    "tktDesc": "TKT is a certification for English teachers. It evaluates knowledge about language teaching. Ideal for those looking to start or strengthen their career as English teachers.",
+    "ieltsName": "International English Language Testing System",
+    "ieltsDesc": "IELTS is one of the most widely accepted exams worldwide for study, migration or work. It measures listening, reading, writing and speaking skills. Two versions: Academic — for university or postgraduate studies. General Training — for migration or professional purposes."
   },
   "certAlianza": {
     "badge": "Official French Certifications",
@@ -291,7 +317,14 @@
     "dalfLabel": "Levels C1 · C2",
     "dalfTitle": "DALF – Diplôme Approfondi de Langue Française",
     "dalfDesc": "The DALF accredits an advanced mastery of the French language, both written and oral. It is ideal for higher education, migration or professional work in French-speaking countries.",
-    "ctaBtn": "Contact us on WhatsApp"
+    "ctaBtn": "Contact us on WhatsApp",
+    "levelPrefix": "Level",
+    "delfA1Desc": "The DELF A1 certification assesses basic comprehension and expression in French. The candidate should be able to introduce themselves, ask simple questions and maintain a brief interaction on everyday topics.",
+    "delfA2Desc": "This level certifies the ability to communicate in simple everyday situations such as shopping, introducing oneself, talking about family, interests or surroundings.",
+    "delfB1Desc": "The B1 exam certifies that the student can get by when travelling, write simple texts, express opinions and understand general messages in everyday situations.",
+    "delfB2Desc": "This level validates that the student can argue, defend opinions, understand complex texts and actively participate in discussions. It is accepted by French and francophone universities for academic admission.",
+    "dalfC1Desc": "Advanced certification assessing fluency, precision, deep text comprehension and the ability to express oneself in a structured way in academic or professional contexts.",
+    "dalfC2Desc": "The highest recognition in the French language. Validates near-native competence with complete comprehension of oral and written texts, and absolute mastery of the language in specialized contexts."
   },
   "certConstancia": {
     "badge": "Official Documents",
@@ -344,7 +377,17 @@
     "aboutText": "APTIS evaluates four core language skills: grammar and vocabulary, listening comprehension, reading and writing. You can choose the speaking module to also certify your oral level. Results are issued on the A1 to C2 European scale.",
     "ctaTitle": "Ready to get certified with APTIS?",
     "ctaSubtitle": "Contact us and receive free guidance on the certification process.",
-    "ctaBtn": "Start my preparation"
+    "ctaBtn": "Start my preparation",
+    "levelsAvailable": "Available levels",
+    "levelA1": "Basic",
+    "levelA2": "Elementary",
+    "levelB1": "Intermediate",
+    "levelB2": "Upper Intermediate",
+    "levelC1": "Advanced",
+    "levelC2": "Mastery",
+    "recognizedIn": "Recognized in",
+    "countries100": "+100 countries",
+    "officialPrep": "Official preparation"
   },
   "uneteAlEquipo": {
     "badge": "Work with us",
