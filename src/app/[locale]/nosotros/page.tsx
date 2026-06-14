@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const teamBase = [
   { name: "Ms. Nadia",     roleKey: "roleEnglish",       image: "/images/maestranadia.jpeg",     objPos: "object-top",    imgStyle: {} },
   { name: "Ms. Karla",     roleKey: "roleEnglishJapFr",  image: "/images/maestrakarla.png",      objPos: "object-top",    imgStyle: {} },
-  { name: "Ms. Monserrat", roleKey: "roleEnglish",       image: "/images/maestramonserrat.png",  objPos: "",              imgStyle: { transform: "scale(0.82)", transformOrigin: "center center", objectPosition: "50% 15%" } },
+  { name: "Ms. Monserrat", roleKey: "roleEnglish",       image: "/images/maestramonserrat.png",  objPos: "",              imgStyle: { transform: "scale(0.82)", transformOrigin: "center center", objectPosition: "50% 5%" } },
   { name: "Mr. Emmanuel",  roleKey: "roleEnglishIt",     image: "/images/msestroemmanuel.png",   objPos: "object-top",    imgStyle: {} },
   { name: "Ms. Yerith",    roleKey: "roleFrIt",          image: "/images/maestraYerith.png",     objPos: "object-top",    imgStyle: {} },
   { name: "Mr. Raúl",      roleKey: "roleEnglish",       image: "/images/maestroraul.png",       objPos: "object-top",    imgStyle: {} },
