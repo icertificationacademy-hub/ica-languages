@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 };
 
 const teamBase = [
-  { name: "Ms. Nadia",     roleKey: "roleEnglish",       image: "/images/maestranadia.jpeg",     objPos: "object-top" },
-  { name: "Ms. Karla",     roleKey: "roleEnglishJapFr",  image: "/images/maestrakarla.png",      objPos: "object-top" },
-  { name: "Ms. Monserrat", roleKey: "roleEnglish",       image: "/images/maestramonserrat.png",  objPos: "object-center" },
-  { name: "Mr. Emmanuel",  roleKey: "roleEnglishIt",     image: "/images/msestroemmanuel.png",   objPos: "object-top" },
-  { name: "Ms. Yerith",    roleKey: "roleFrIt",          image: "/images/maestraYerith.png",     objPos: "object-top" },
-  { name: "Mr. Raúl",      roleKey: "roleEnglish",       image: "/images/maestroraul.png",       objPos: "object-top" },
-  { name: "Ms. Mariana",   roleKey: "roleEnglish",       image: "/images/maestramariana.png",    objPos: "object-top" },
-  { name: "Ms. Katerine",  roleKey: "roleEnglish",       image: "/images/maestrakaterin.png",    objPos: "object-top" },
+  { name: "Ms. Nadia",     roleKey: "roleEnglish",       image: "/images/maestranadia.jpeg",     objPos: "object-top",    imgScale: "" },
+  { name: "Ms. Karla",     roleKey: "roleEnglishJapFr",  image: "/images/maestrakarla.png",      objPos: "object-top",    imgScale: "" },
+  { name: "Ms. Monserrat", roleKey: "roleEnglish",       image: "/images/maestramonserrat.png",  objPos: "object-top",    imgScale: "scale-150" },
+  { name: "Mr. Emmanuel",  roleKey: "roleEnglishIt",     image: "/images/msestroemmanuel.png",   objPos: "object-top",    imgScale: "" },
+  { name: "Ms. Yerith",    roleKey: "roleFrIt",          image: "/images/maestraYerith.png",     objPos: "object-top",    imgScale: "" },
+  { name: "Mr. Raúl",      roleKey: "roleEnglish",       image: "/images/maestroraul.png",       objPos: "object-top",    imgScale: "" },
+  { name: "Ms. Mariana",   roleKey: "roleEnglish",       image: "/images/maestramariana.png",    objPos: "object-top",    imgScale: "" },
+  { name: "Ms. Katerine",  roleKey: "roleEnglish",       image: "/images/maestrakaterin.png",    objPos: "object-top",    imgScale: "" },
 ];
 
 export default async function NosotrosPage({
@@ -255,7 +255,7 @@ export default async function NosotrosPage({
                     src={member.image}
                     alt={member.name}
                     fill
-                    className={`object-cover ${member.objPos} transition-transform duration-500 group-hover:scale-105`}
+                    className={`object-cover ${member.objPos} ${member.imgScale} transition-transform duration-500 group-hover:scale-105`}
                   />
                 </div>
                 <div className="px-5 py-4">
