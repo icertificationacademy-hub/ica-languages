@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 const partners = [
   {
@@ -19,12 +20,13 @@ const partners = [
   },
 ];
 
-export default function PartnersSection() {
+export default async function PartnersSection() {
+  const t = await getTranslations("home");
   return (
     <section className="py-14 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-semibold text-slate-400 uppercase tracking-widest mb-10">
-          Empresas que confían en nosotros
+          {t("partnersLabel")}
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
