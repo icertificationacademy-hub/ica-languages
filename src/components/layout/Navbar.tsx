@@ -134,6 +134,7 @@ export default function Navbar() {
               alt="ICA Languages — Learn, grow, communicate"
               width={300}
               height={76}
+              quality={100}
               className="h-[48px] sm:h-[60px] lg:h-[68px] w-auto object-contain"
               priority
             />

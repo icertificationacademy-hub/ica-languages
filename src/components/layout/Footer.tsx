@@ -10,8 +10,8 @@ export default async function Footer() {
 
   const navLinks = [
     { label: tNav("inicio"), href: "/" },
-    { label: tNav("cursos"), href: "/cursos" },
-    { label: tNav("certificaciones"), href: "/certificaciones" },
+    { label: tNav("cursos"), href: "/cursos/ingles" },
+    { label: tNav("certificaciones"), href: "/certificaciones/cambridge" },
     { label: tNav("nosotros"), href: "/nosotros" },
   ];
 
@@ -27,6 +27,7 @@ export default async function Footer() {
                 alt="ICA Languages"
                 width={180}
                 height={46}
+                quality={100}
                 className="h-10 w-auto object-contain"
               />
             </Link>
@@ -116,11 +117,13 @@ export default async function Footer() {
               {[
                 { key: "cambridge",       href: "/certificaciones/cambridge" },
                 { key: "alianzaFrancesa", href: "/certificaciones/alianza-francesa" },
+                { key: "aptis", href: "/certificaciones/aptis" },
                 { key: "constanciaNivel", href: "/certificaciones/constancia-de-nivel" },
+                
               ].map((item) => (
                 <li key={item.key}>
                   <Link
-                    href={item.href as "/certificaciones/cambridge" | "/certificaciones/alianza-francesa" | "/certificaciones/constancia-de-nivel"}
+                    href={item.href as "/certificaciones/cambridge" | "/certificaciones/alianza-francesa" | "/certificaciones/aptis" | "/certificaciones/constancia-de-nivel"}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     {tNav(item.key as Parameters<typeof tNav>[0])}

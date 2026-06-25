@@ -13,7 +13,7 @@ export const siteConfig = {
   address: "Av Juárez 412, Centro, 90300 Apizaco, Tlaxcala",
   campus: "https://campus.icalanguages.com.mx/login",
   social: {
-    facebook: "https://facebook.com/icalanguages",
+    facebook: "https://www.facebook.com/profile.php?id=100063501674760",
     instagram: "https://instagram.com/ica_languages",
     tiktok: "https://tiktok.com/@ica_languages",
     youtube: "https://youtube.com/@icalanguages",
@@ -44,6 +44,7 @@ export const navLinks = [
     children: [
       { label: "Cambridge", href: "/certificaciones/cambridge" },
       { label: "Alianza Francesa", href: "/certificaciones/alianza-francesa" },
+      { label: "APTIS", href: "/certificaciones/aptis" },
       {
         label: "Constancia de Nivel",
         href: "/certificaciones/constancia-de-nivel",
@@ -155,6 +156,16 @@ export const certifications = [
     href: "/certificaciones/alianza-francesa",
     icon: "🏅",
     exams: ["DELF A1", "DELF A2", "DELF B1", "DELF B2", "DALF C1", "DALF C2"],
+  },
+  {
+    id: "aptis",
+    title: "APTIS",
+    subtitle: "British Council",
+    description:
+      "Certifica tu nivel de inglés con APTIS del British Council. Flexible, ágil y con reconocimiento internacional. Resultados rápidos y proceso eficiente.",
+    href: "/certificaciones/aptis",
+    icon: "🇬🇧",
+    exams: ["APTIS General", "APTIS for Teachers", "APTIS Advanced"],
   },
   {
     id: "constancia-de-nivel",

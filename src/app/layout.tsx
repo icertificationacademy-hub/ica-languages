@@ -18,9 +18,12 @@ export const metadata: Metadata = {
   title: "ICA Languages",
   description: "Aprende inglés y francés con confianza en ICA Languages, Apizaco Tlaxcala.",
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/images/logo.png", type: "image/png", sizes: "any" },
+    ],
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
   },
 };
 
