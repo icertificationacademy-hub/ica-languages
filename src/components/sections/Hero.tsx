@@ -29,7 +29,7 @@ export default async function Hero() {
       />
 
       {/* Spacer */}
-      <div className="h-[30vh]" />
+      <div className="h-[40vh]" />
 
       {/* ── CONTENT ── */}
       <div className="relative z-10 w-full text-center px-4 sm:px-6 lg:px-8 pb-14">
